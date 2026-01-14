@@ -1,0 +1,33 @@
+package carcassonneWS;
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class CarcassonneWebSocket extends WebSocketClient {
+
+    public CarcassonneWebSocket(String ip, int port) throws URISyntaxException {
+        super(new URI("ws://" + ip + ":" + port));
+    }
+
+    @Override
+    public void onOpen(ServerHandshake serverHandshake) {
+        System.out.println("CarcassonneWebSocket opened");
+    }
+
+    @Override
+    public void onMessage(String s) {
+        System.out.println(s);
+    }
+
+    @Override
+    public void onClose(int i, String s, boolean b) {
+        System.out.println(s);
+    }
+
+    @Override
+    public void onError(Exception e) {
+        e.printStackTrace();
+    }
+}
