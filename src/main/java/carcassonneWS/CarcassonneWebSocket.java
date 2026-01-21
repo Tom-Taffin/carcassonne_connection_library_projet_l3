@@ -7,8 +7,11 @@ import java.net.URISyntaxException;
 
 public class CarcassonneWebSocket extends WebSocketClient {
 
-    public CarcassonneWebSocket(String ip, int port) throws URISyntaxException {
+    CarcassonneGUI gui; 
+
+    public CarcassonneWebSocket(String ip, int port, CarcassonneGUI gui) throws URISyntaxException {
         super(new URI("ws://" + ip + ":" + port));
+        this.gui = gui;
     }
 
     @Override
@@ -19,6 +22,7 @@ public class CarcassonneWebSocket extends WebSocketClient {
     @Override
     public void onMessage(String s) {
         System.out.println(s);
+        this.gui.update();
     }
 
     @Override
