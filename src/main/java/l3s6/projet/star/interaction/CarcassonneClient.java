@@ -1,16 +1,15 @@
-package carcassonneWS;
+package l3s6.projet.star.interaction;
 
 import java.net.URISyntaxException;
-import java.util.concurrent.TimeUnit;
 
 public class CarcassonneClient {
 
     CarcassonneWebSocket cws;
     String id = null;
-    CarcassonneGUI gui;
+    CarcassonneUpdateListener updateListener;
 
-    public CarcassonneClient(String ip, int port, String id, CarcassonneGUI gui) throws URISyntaxException, InterruptedException{
-        this.cws = new CarcassonneWebSocket(ip, port, gui);
+    public CarcassonneClient(String ip, int port, String id, CarcassonneUpdateListener updateListener) throws URISyntaxException, InterruptedException{
+        this.cws = new CarcassonneWebSocket(ip, port, updateListener);
         this.cws.connectBlocking();
         this.id = id;
         this.cws.send(id + " ENTERS");

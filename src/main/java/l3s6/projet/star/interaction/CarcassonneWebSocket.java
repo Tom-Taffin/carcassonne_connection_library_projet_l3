@@ -1,4 +1,4 @@
-package carcassonneWS;
+package l3s6.projet.star.interaction;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -7,11 +7,11 @@ import java.net.URISyntaxException;
 
 public class CarcassonneWebSocket extends WebSocketClient {
 
-    CarcassonneGUI gui; 
+    CarcassonneUpdateListener updateListener; 
 
-    public CarcassonneWebSocket(String ip, int port, CarcassonneGUI gui) throws URISyntaxException {
+    public CarcassonneWebSocket(String ip, int port, CarcassonneUpdateListener updateListener) throws URISyntaxException {
         super(new URI("ws://" + ip + ":" + port));
-        this.gui = gui;
+        this.updateListener = updateListener;
     }
 
     @Override
@@ -20,9 +20,8 @@ public class CarcassonneWebSocket extends WebSocketClient {
     }
 
     @Override
-    public void onMessage(String s) {
-        System.out.println(s);
-        this.gui.update();
+    public void onMessage(String message) {
+        this.updateListener.update(message);
     }
 
     @Override
