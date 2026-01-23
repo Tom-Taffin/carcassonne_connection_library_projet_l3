@@ -28,7 +28,9 @@ public class TerminalPlayerView extends PlayerView {
             TerminalPlayerView terminalInterface = new TerminalPlayerView(args[0] , Integer.parseInt(args[1]), args[2]);
             Scanner s = new Scanner(System.in);
             s.nextLine();
-            terminalInterface.client.leave();
+            terminalInterface.client.place(null, 1, 2, "blue");
+            s.nextLine();
+            terminalInterface.client.close();
             s.close();
         } catch (Exception e) {
             e.printStackTrace();

@@ -16,9 +16,10 @@ public class PlayerRouter implements GameListener{
         String id = messageArray.get(0);
         String keyword = messageArray.get(1);
         if (keyword.equals("PLACES")){
-            int x = Integer.parseInt(messageArray.get(3));
-            int y = Integer.parseInt(messageArray.get(4));
-            String meeple = messageArray.get(5);
+            String[] xy = messageArray.get(3).split(":");
+            int x = Integer.parseInt(xy[0]);
+            int y = Integer.parseInt(xy[1]);
+            String meeple = messageArray.get(4);
             this.carcassonneInterface.updateOnPlace(id, null, x, y, meeple);
         } else if (keyword.equals("OFFERS")){
             List<String> players = messageArray.subList(3, messageArray.size());

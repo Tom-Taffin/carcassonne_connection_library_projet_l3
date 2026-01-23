@@ -7,7 +7,7 @@ import l3s6.projet.star.game.tile.Tile;
     
 public abstract class PlayerView {
 
-    AbstractClient client;
+    PlayerClient client;
     GameListener dispatcher;
 
     public PlayerView(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException{
@@ -16,7 +16,7 @@ public abstract class PlayerView {
 
     public void connect(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException{
         this.dispatcher = new PlayerRouter(this);
-        this.client = new AbstractClient(ipAddress, port, id, dispatcher);
+        this.client = new PlayerClient(ipAddress, port, id, dispatcher);
     }
 
     public abstract void updateOnPlace(String player, Tile tile, int x, int y, String meeple);
