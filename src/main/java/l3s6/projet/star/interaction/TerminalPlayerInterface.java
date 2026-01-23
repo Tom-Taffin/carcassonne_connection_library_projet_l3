@@ -6,17 +6,10 @@ import java.util.Scanner;
 
 import l3s6.projet.star.game.tile.Tile;
 
-public class TerminalPlayerInterface implements CarcassonnePlayerInterface, Runnable {
+public class TerminalPlayerInterface extends CarcassonnePlayerInterface {
 
-    protected String ipAddress;
-    protected int port;
-    protected String id;
-
-
-    public TerminalPlayerInterface(String ipAddress, int port, String id) {
-        this.ipAddress = ipAddress;
-        this.port = port;
-        this.id = id;
+    public TerminalPlayerInterface(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
+        super(ipAddress, port, id);
     }
 
     public void updateOnPlace(String player, Tile tile, int x, int y, String meeple){
@@ -27,19 +20,20 @@ public class TerminalPlayerInterface implements CarcassonnePlayerInterface, Runn
         System.out.println("Players " + players + " recieve the tile " + tile);
     }
 
-    @Override
-    public void run() {
-        CarcassonneClient client;
-        CarcassonnePlayerDispatcher dispatcher = new CarcassonnePlayerDispatcher(this);
+    public static void main(String[] args) {
+        if (args.length != 3){
+            System.err.println("Invalid number of arguments.\n Usage : arg 1 = ip address, arg 2 = port, arg 3 = id.");
+        }
         try {
-            client = new CarcassonneClient(this.ipAddress, this.port, this.id, (CarcassonneUpdateListener) dispatcher);
+            TerminalPlayerInterface terminalInterface = new TerminalPlayerInterface(args[0] , Integer.parseInt(args[1]), args[2]);
             Scanner s = new Scanner(System.in);
             s.nextLine();
-            client.leave();
+            terminalInterface.client.leave();
             s.close();
-        } catch (URISyntaxException | InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
     
 }

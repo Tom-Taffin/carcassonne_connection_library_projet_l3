@@ -7,10 +7,14 @@ import java.net.URISyntaxException;
 
 public class CarcassonneWebSocket extends WebSocketClient {
 
-    CarcassonneUpdateListener updateListener; 
+    CarcassonneUpdateListener updateListener;
+    String ipAddress;
+    int port;
 
-    public CarcassonneWebSocket(String ip, int port, CarcassonneUpdateListener updateListener) throws URISyntaxException {
-        super(new URI("ws://" + ip + ":" + port));
+    public CarcassonneWebSocket(String ipAddress, int port, CarcassonneUpdateListener updateListener) throws URISyntaxException {
+        super(new URI("ws://" + ipAddress + ":" + port));
+        this.ipAddress = ipAddress;
+        this.port = port;
         this.updateListener = updateListener;
     }
 

@@ -6,7 +6,6 @@ public class CarcassonneClient {
 
     CarcassonneWebSocket cws;
     String id = null;
-    CarcassonneUpdateListener updateListener;
 
     public CarcassonneClient(String ip, int port, String id, CarcassonneUpdateListener updateListener) throws URISyntaxException, InterruptedException{
         this.cws = new CarcassonneWebSocket(ip, port, updateListener);
