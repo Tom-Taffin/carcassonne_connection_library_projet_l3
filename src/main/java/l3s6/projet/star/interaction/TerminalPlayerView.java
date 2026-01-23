@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 import l3s6.projet.star.game.tile.Tile;
 
-public class TerminalPlayerInterface extends CarcassonnePlayerInterface {
+public class TerminalPlayerView extends PlayerView {
 
-    public TerminalPlayerInterface(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
+    public TerminalPlayerView(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
         super(ipAddress, port, id);
     }
 
@@ -25,7 +25,7 @@ public class TerminalPlayerInterface extends CarcassonnePlayerInterface {
             System.err.println("Invalid number of arguments.\n Usage : arg 1 = ip address, arg 2 = port, arg 3 = id.");
         }
         try {
-            TerminalPlayerInterface terminalInterface = new TerminalPlayerInterface(args[0] , Integer.parseInt(args[1]), args[2]);
+            TerminalPlayerView terminalInterface = new TerminalPlayerView(args[0] , Integer.parseInt(args[1]), args[2]);
             Scanner s = new Scanner(System.in);
             s.nextLine();
             terminalInterface.client.leave();

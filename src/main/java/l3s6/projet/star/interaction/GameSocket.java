@@ -5,13 +5,13 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class CarcassonneWebSocket extends WebSocketClient {
+public class GameSocket extends WebSocketClient {
 
-    CarcassonneUpdateListener updateListener;
+    GameListener updateListener;
     String ipAddress;
     int port;
 
-    public CarcassonneWebSocket(String ipAddress, int port, CarcassonneUpdateListener updateListener) throws URISyntaxException {
+    public GameSocket(String ipAddress, int port, GameListener updateListener) throws URISyntaxException {
         super(new URI("ws://" + ipAddress + ":" + port));
         this.ipAddress = ipAddress;
         this.port = port;

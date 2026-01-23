@@ -2,13 +2,13 @@ package l3s6.projet.star.interaction;
 
 import java.net.URISyntaxException;
 
-public class CarcassonneClient {
+public class AbstractClient {
 
-    CarcassonneWebSocket cws;
+    GameSocket cws;
     String id = null;
 
-    public CarcassonneClient(String ip, int port, String id, CarcassonneUpdateListener updateListener) throws URISyntaxException, InterruptedException{
-        this.cws = new CarcassonneWebSocket(ip, port, updateListener);
+    public AbstractClient(String ip, int port, String id, GameListener updateListener) throws URISyntaxException, InterruptedException{
+        this.cws = new GameSocket(ip, port, updateListener);
         this.cws.connectBlocking();
         this.id = id;
         this.cws.send(id + " ENTERS");

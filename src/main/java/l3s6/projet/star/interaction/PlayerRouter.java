@@ -3,11 +3,11 @@ package l3s6.projet.star.interaction;
 import java.util.Arrays;
 import java.util.List;
 
-public class CarcassonnePlayerDispatcher implements CarcassonneUpdateListener{
+public class PlayerRouter implements GameListener{
     
-    public CarcassonnePlayerInterface carcassonneInterface;
+    public PlayerView carcassonneInterface;
     
-    public CarcassonnePlayerDispatcher (CarcassonnePlayerInterface carcassonneInterface){
+    public PlayerRouter (PlayerView carcassonneInterface){
         this.carcassonneInterface = carcassonneInterface;
     }
 
