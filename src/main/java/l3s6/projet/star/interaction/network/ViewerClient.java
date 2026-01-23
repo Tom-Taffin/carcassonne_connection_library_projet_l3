@@ -1,6 +1,8 @@
-package l3s6.projet.star.interaction;
+package l3s6.projet.star.interaction.network;
 
 import java.net.URISyntaxException;
+
+import l3s6.projet.star.interaction.router.GameListener;
 
 public class ViewerClient extends AbstractClient {
 

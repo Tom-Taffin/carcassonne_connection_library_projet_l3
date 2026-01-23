@@ -1,6 +1,8 @@
-package l3s6.projet.star.interaction;
+package l3s6.projet.star.interaction.network;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+
+import l3s6.projet.star.interaction.router.GameListener;
 
 import java.net.URI;
 import java.net.URISyntaxException;

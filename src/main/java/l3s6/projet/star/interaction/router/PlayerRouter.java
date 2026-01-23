@@ -1,7 +1,9 @@
-package l3s6.projet.star.interaction;
+package l3s6.projet.star.interaction.router;
 
 import java.util.Arrays;
 import java.util.List;
+
+import l3s6.projet.star.interaction.view.PlayerView;
 
 public class PlayerRouter implements GameListener{
     

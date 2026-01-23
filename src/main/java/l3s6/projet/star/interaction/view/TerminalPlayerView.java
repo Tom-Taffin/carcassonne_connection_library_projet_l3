@@ -1,4 +1,4 @@
-package l3s6.projet.star.interaction;
+package l3s6.projet.star.interaction.view;
 
 import java.net.URISyntaxException;
 import java.util.List;
