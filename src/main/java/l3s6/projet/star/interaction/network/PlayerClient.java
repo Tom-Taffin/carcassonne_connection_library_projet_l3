@@ -5,7 +5,7 @@ import java.net.URISyntaxException;
 import l3s6.projet.star.game.tile.Tile;
 import l3s6.projet.star.interaction.router.GameListener;
 
-public class PlayerClient extends ViewerClient {
+public class PlayerClient extends SpectatorClient {
 
     String id;
 
