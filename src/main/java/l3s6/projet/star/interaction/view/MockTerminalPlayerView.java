@@ -7,9 +7,9 @@ import java.util.Scanner;
 import l3s6.projet.star.game.tile.Tile;
 import l3s6.projet.star.interaction.network.PlayerClient;
 
-public class TerminalPlayerView extends PlayerView<PlayerClient> {
+public class MockTerminalPlayerView extends PlayerView<PlayerClient> {
 
-    public TerminalPlayerView(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
+    public MockTerminalPlayerView(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
         super(ipAddress, port, id);
     }
 
@@ -46,7 +46,7 @@ public class TerminalPlayerView extends PlayerView<PlayerClient> {
             System.err.println("Invalid number of arguments.\n Usage : arg 1 = ip address, arg 2 = port, arg 3 = id.");
         }
         try {
-            TerminalPlayerView terminalInterface = new TerminalPlayerView(args[0] , Integer.parseInt(args[1]), args[2]);
+            MockTerminalPlayerView terminalInterface = new MockTerminalPlayerView(args[0] , Integer.parseInt(args[1]), args[2]);
             Scanner s = new Scanner(System.in);
             s.nextLine();
             terminalInterface.client.place(null, 1, 2, "blue");
