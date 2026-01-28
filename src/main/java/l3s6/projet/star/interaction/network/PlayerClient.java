@@ -3,6 +3,9 @@ package l3s6.projet.star.interaction.network;
 import java.net.URISyntaxException;
 
 import l3s6.projet.star.game.tile.Tile;
+import l3s6.projet.star.interaction.command.EnterCommand;
+import l3s6.projet.star.interaction.command.LeaveCommand;
+import l3s6.projet.star.interaction.command.PlaceCommand;
 import l3s6.projet.star.interaction.router.GameListener;
 
 public class PlayerClient extends SpectatorClient {
@@ -22,15 +25,18 @@ public class PlayerClient extends SpectatorClient {
     }
 
     public void enter(){
-        this.cws.send(id + " ENTERS");
+        EnterCommand command = new EnterCommand();
+        this.cws.send(command.build(id, null));
     }
 
-    public void leave(){
-        this.cws.send(id + " LEAVES");
+    public void leave() {
+        LeaveCommand command = new LeaveCommand();
+        this.cws.send(command.build(id, null));
     }
 
     public void place(Tile tile, int x, int y, String meeple){
-        this.cws.send(id + " PLACES " + tile + " " + x + ":" + y + " " + meeple);
+        PlaceCommand command = new PlaceCommand();
+        this.cws.send(command.build(id, tile, x, y, meeple));
     }
 
 }

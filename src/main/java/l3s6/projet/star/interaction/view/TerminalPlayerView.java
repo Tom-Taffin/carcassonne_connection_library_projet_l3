@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import l3s6.projet.star.game.tile.Tile;
+import l3s6.projet.star.interaction.network.PlayerClient;
 
-public class TerminalPlayerView extends PlayerView {
+public class TerminalPlayerView extends PlayerView<PlayerClient> {
 
     public TerminalPlayerView(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
         super(ipAddress, port, id);
@@ -24,8 +25,20 @@ public class TerminalPlayerView extends PlayerView {
         System.out.println("Player " + player + " enters the game");
     }
 
+    public void updateOnLeave(String player){
+        System.out.println("Player " + player + " leaves the game");
+    }
+
+    public void updateOnClose(String player){
+        System.out.println("Player " + player + " closed the game");
+    }
+
     public void updateOnExpel(String player, String expelledPlayer){
         System.out.println("Player " + player + " expels " + expelledPlayer);
+    }
+
+    public void updateOnGrant(String player, String grantedPlayer, List<String> keywords){
+        System.out.println("Player " + player + " grants " + grantedPlayer);
     }
 
     public static void main(String[] args) {
