@@ -20,6 +20,10 @@ public class TerminalPlayerView extends PlayerView {
         System.out.println("Players " + players + " recieve the tile " + tile);
     }
 
+    public void updateOnEnter(String player){
+        System.out.println("Player " + player + " enters the game");
+    }
+
     public static void main(String[] args) {
         if (args.length != 3){
             System.err.println("Invalid number of arguments.\n Usage : arg 1 = ip address, arg 2 = port, arg 3 = id.");

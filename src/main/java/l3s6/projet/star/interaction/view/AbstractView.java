@@ -30,4 +30,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnOffer(String player, Tile tile, List<String> players);
 
+    public abstract void updateOnEnter(String player);
+
 }

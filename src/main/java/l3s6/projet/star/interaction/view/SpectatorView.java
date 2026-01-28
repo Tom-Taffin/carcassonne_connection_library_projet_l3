@@ -31,8 +31,4 @@ public abstract class SpectatorView<T extends SpectatorClient> extends AbstractV
         return new SpectatorClient(ipAddress, port, this.dispatcher);
     }
 
-    public abstract void updateOnPlace(String player, Tile tile, int x, int y, String meeple);
-
-    public abstract void updateOnOffer(String player, Tile tile, List<String> players);
-
 }
