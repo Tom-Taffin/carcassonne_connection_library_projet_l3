@@ -6,8 +6,12 @@ import java.util.List;
 
 public class EnterCommand<V extends AbstractView> extends AbstractCommand<V> {
 
+    public EnterCommand(){
+        this.keyword = "ENTERS";
+    }
+
      public String build(String id, Object... params){
-        return id + " ENTERS";
+        return id + " " + this.keyword;
      }
 
      public void execute(List<String> parts, V view){

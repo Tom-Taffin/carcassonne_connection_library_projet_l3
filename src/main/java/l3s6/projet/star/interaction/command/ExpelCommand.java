@@ -6,8 +6,12 @@ import java.util.List;
 
 public class ExpelCommand<V extends AbstractView> extends AbstractCommand<V> {
 
+    public ExpelCommand(){
+        this.keyword = "EXPELS";
+    }
+
     public String build(String id, Object... params){
-        return id + " EXPELS " + params[0];
+        return id + " " + this.keyword + " " + params[0];
     }
 
     public void execute(List<String> parts, V view){

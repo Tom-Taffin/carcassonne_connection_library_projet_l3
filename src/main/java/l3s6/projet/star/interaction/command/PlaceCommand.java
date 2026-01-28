@@ -6,8 +6,12 @@ import java.util.List;
 
 public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
 
+    public PlaceCommand(){
+        this.keyword = "PLACES";
+    }
+
     public String build(String id, Object... params){
-        return String.format("%s PLACES %s %d:%d %s", id, params[0], params[1], params[2], params[3]);
+        return String.format("%s %s %s %d:%d %s", id, this.keyword, params[0], params[1], params[2], params[3]);
     }
 
     public void execute(List<String> parts, V view){

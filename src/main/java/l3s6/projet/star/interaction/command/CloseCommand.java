@@ -6,8 +6,12 @@ import java.util.List;
 
 public class CloseCommand<V extends AbstractView> extends AbstractCommand<V> {
 
+    public CloseCommand(){
+        this.keyword = "CLOSES";
+    }
+
     public String build(String id, Object... params){
-        return id + " CLOSES";
+        return id + " " + this.keyword;
     }
 
     public void execute(List<String> parts, V view){

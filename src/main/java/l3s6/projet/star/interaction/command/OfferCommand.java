@@ -6,8 +6,12 @@ import java.util.List;
 
 public class OfferCommand<V extends AbstractView> extends AbstractCommand<V> {
 
+    public OfferCommand(){
+        this.keyword = "OFFERS";
+    }
+
     public String build(String id, Object... params){
-        StringBuilder stringBuilder = new StringBuilder(id).append(" OFFERS");
+        StringBuilder stringBuilder = new StringBuilder(id).append(" ").append(this.keyword);
         for (Object o : params){
             stringBuilder.append(" ").append(o);
         }

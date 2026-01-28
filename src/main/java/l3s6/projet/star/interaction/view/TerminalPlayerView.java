@@ -10,7 +10,8 @@ import l3s6.projet.star.interaction.network.PlayerClient;
 public class TerminalPlayerView extends PlayerView<PlayerClient> {
 
     public TerminalPlayerView(String ipAddress, int port, String id) throws InterruptedException, URISyntaxException {
-        super(ipAddress, port, id);
+        super(ipAddress, p
+                ort, id);
     }
 
     public void updateOnPlace(String player, Tile tile, int x, int y, String meeple){
