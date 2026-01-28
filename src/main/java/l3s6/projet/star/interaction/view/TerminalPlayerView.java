@@ -17,11 +17,15 @@ public class TerminalPlayerView extends PlayerView {
     }
 
     public void updateOnOffer(String player, Tile tile, List<String> players){
-        System.out.println("Players " + players + " recieve the tile " + tile);
+        System.out.println("Players " + players + " receive the tile " + tile);
     }
 
     public void updateOnEnter(String player){
         System.out.println("Player " + player + " enters the game");
+    }
+
+    public void updateOnExpel(String player, String expelledPlayer){
+        System.out.println("Player " + player + " expels " + expelledPlayer);
     }
 
     public static void main(String[] args) {

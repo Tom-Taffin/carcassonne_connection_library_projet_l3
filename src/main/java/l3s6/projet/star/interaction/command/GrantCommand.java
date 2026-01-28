@@ -1,7 +1,5 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
-
 import java.util.List;
 
 public class GrantCommand extends AbstractCommand<AdminView> {

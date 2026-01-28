@@ -32,4 +32,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnEnter(String player);
 
+    public abstract void updateOnExpel(String player, String expelledPlayer);
+
 }
