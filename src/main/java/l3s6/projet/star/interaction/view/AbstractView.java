@@ -34,4 +34,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnExpel(String player, String expelledPlayer);
 
+    public abstract void updateOnGrant(String player, String grantedPlayer, List<String> keywords);
+
 }

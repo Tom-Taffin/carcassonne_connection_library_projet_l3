@@ -4,10 +4,11 @@ import java.net.URISyntaxException;
 
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.network.PlayerClient;
+import l3s6.projet.star.interaction.network.SpectatorClient;
 import l3s6.projet.star.interaction.router.GameListener;
 import l3s6.projet.star.interaction.router.PlayerRouter;
     
-public abstract class PlayerView extends SpectatorView<PlayerClient> {
+public abstract class PlayerView<T extends PlayerClient> extends SpectatorView<T> {
 
     public PlayerView(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException{
         super(ipAddress, port, id);
