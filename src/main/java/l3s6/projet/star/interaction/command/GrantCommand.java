@@ -1,0 +1,21 @@
+package l3s6.projet.star.interaction.command;
+
+import l3s6.projet.star.interaction.view.AbstractView;
+
+import java.util.List;
+
+public class GrantCommand extends AbstractCommand<AdminView> {
+
+    public String build(String id, Object... params){
+        /* format: id GRANTS id’ mot-clé+ */
+        StringBuilder stringBuilder = new StringBuilder(id).append(" GRANTS");
+        for (Object o : params){
+            stringBuilder.append(" ").append(o);
+        }
+        return stringBuilder.toString();
+    }
+
+    public void execute(List<String> parts, AdminView view){
+        view.updateOnGrant(parts.get(0), parts.get(2), parts.subList(3, parts.size()));
+    }
+}
