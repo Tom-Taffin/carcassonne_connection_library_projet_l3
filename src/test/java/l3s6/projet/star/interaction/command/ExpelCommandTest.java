@@ -5,21 +5,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class GrantCommandTest extends AbstractCommandTest {
+public class ExpelCommandTest extends AbstractCommandTest {
 
     public AbstractCommand getCommand(){
-        return new GrantCommand();
+        return new ExpelCommand();
     }
 
     @Test
     public void testCorrectBuild() throws InvalidArgumentNumberException {
-        assertEquals("Sam GRANTS Rem EXPELS" ,this.command.build("Sam", "Rem", "EXPELS"));
+        assertEquals("Sam EXPELS Rem" ,this.command.build("Sam", "Rem"));
     }
 
     @Test
     public void testIncorrectBuild() {
         assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", null);});
-        assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", "Rem");});
+        assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", "Rem", "wrong argument");});
     }
 
 }
