@@ -12,6 +12,9 @@ public class GrantCommand extends AbstractCommand<AdminView> {
 
     public String build(String id, Object... params) throws InvalidArgumentNumberException {
         /* format: id GRANTS id’ mot-clé+ */
+        if (params.length < 2){
+            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 2 or more for GRANTS command)");
+        }
         StringBuilder stringBuilder = new StringBuilder(id).append(" ").append(this.keyword);
         for (Object o : params){
             stringBuilder.append(" ").append(o);
