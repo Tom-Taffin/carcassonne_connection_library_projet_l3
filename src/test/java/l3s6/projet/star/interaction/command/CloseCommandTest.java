@@ -1,17 +1,19 @@
 package l3s6.projet.star.interaction.command;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-public class EnterCommandTest extends AbstractCommandTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class CloseCommandTest extends AbstractCommandTest {
 
     public AbstractCommand getCommand(){
-        return new EnterCommand();
+        return new CloseCommand();
     }
 
     @Test
     public void testCorrectBuild() throws InvalidArgumentNumberException {
-        assertEquals("Sam ENTERS" ,this.command.build("Sam", null));
+        assertEquals("Sam CLOSES" ,this.command.build("Sam", null));
     }
 
     @Test

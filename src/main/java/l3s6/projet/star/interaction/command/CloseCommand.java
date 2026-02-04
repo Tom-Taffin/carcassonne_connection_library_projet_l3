@@ -11,6 +11,9 @@ public class CloseCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public String build(String id, Object... params) throws InvalidArgumentNumberException {
+        if (params != null){
+            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 0 for CLOSES command)");
+        }
         return id + " " + this.keyword;
     }
 
