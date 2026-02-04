@@ -2,8 +2,8 @@ package l3s6.projet.star.interaction.network;
 
 import java.net.URISyntaxException;
 
-import l3s6.projet.star.interaction.command.ExpelCommand;
-import l3s6.projet.star.interaction.command.GrantCommand;
+import l3s6.projet.star.game.tile.Tile;
+import l3s6.projet.star.interaction.command.*;
 import l3s6.projet.star.interaction.router.GameListener;
 
 public class AdminClient extends PlayerClient {
@@ -14,13 +14,39 @@ public class AdminClient extends PlayerClient {
     }
 
     public void expel(String expelledPlayer){
-        ExpelCommand expelCommand = new ExpelCommand();
-        this.cws.send(expelCommand.build(id, expelledPlayer));
+        try {
+            ExpelCommand expelCommand = new ExpelCommand();
+            this.cws.send(expelCommand.build(id, expelledPlayer));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
     }
 
     public void grant(String grantedPlayer, String... keywords){
-        GrantCommand grantCommand = new GrantCommand();
-        this.cws.send(grantCommand.build(id, keywords));
+        try {
+            GrantCommand grantCommand = new GrantCommand();
+            this.cws.send(grantCommand.build(id, grantedPlayer, keywords));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void offer(String player, Tile tile){
+        try {
+            OfferCommand offerCommand = new OfferCommand();
+            this.cws.send(offerCommand.build(id, player, tile));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void close(){
+        try {
+            CloseCommand closeCommand = new CloseCommand();
+            this.cws.send(closeCommand.build(id));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
     }
 
 }
