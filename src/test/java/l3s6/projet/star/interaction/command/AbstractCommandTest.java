@@ -15,9 +15,9 @@ public abstract class AbstractCommandTest {
     public abstract AbstractCommand getCommand();
 
     @Test
-    public abstract void testCorrectBuild();
+    public abstract void testCorrectBuild() throws InvalidArgumentNumberException;
 
     @Test
-    public abstract void testIncorrectBuild();
+    public abstract void testIncorrectBuild() throws InvalidArgumentNumberException;
 
 }
