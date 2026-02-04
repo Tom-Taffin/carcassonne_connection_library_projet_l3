@@ -11,6 +11,10 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public String build(String id, Object... params) throws InvalidArgumentNumberException {
+        /* format: id PLACES tile x y meeple */
+        if (params == null || params.length != 4){
+            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 4 for PLACES command)");
+        }
         return String.format("%s %s %s %d:%d %s", id, this.keyword, params[0], params[1], params[2], params[3]);
     }
 
