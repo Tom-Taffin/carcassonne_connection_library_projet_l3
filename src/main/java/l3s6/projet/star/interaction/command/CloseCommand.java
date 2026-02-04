@@ -10,7 +10,7 @@ public class CloseCommand<V extends AbstractView> extends AbstractCommand<V> {
         this.keyword = "CLOSES";
     }
 
-    public String build(String id, Object... params){
+    public String build(String id, Object... params) throws InvalidArgumentNumberException {
         return id + " " + this.keyword;
     }
 

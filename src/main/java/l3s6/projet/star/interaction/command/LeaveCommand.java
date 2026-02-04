@@ -10,7 +10,7 @@ public class LeaveCommand<V extends AbstractView> extends AbstractCommand<V> {
         this.keyword = "LEAVES";
     }
 
-     public String build(String id, Object... params){
+     public String build(String id, Object... params) throws InvalidArgumentNumberException {
         return id + " " + this.keyword;
      }
 

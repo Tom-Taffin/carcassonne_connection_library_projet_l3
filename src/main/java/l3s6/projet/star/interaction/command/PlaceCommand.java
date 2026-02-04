@@ -10,7 +10,7 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
         this.keyword = "PLACES";
     }
 
-    public String build(String id, Object... params){
+    public String build(String id, Object... params) throws InvalidArgumentNumberException {
         return String.format("%s %s %s %d:%d %s", id, this.keyword, params[0], params[1], params[2], params[3]);
     }
 

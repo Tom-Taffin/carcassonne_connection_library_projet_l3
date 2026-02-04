@@ -6,7 +6,7 @@ public abstract class AbstractCommand<V> {
 
     protected String keyword;
 
-    public abstract String build(String id, Object... params);
+    public abstract String build(String id, Object... params) throws InvalidArgumentNumberException;
 
     public abstract void execute(List<String> parts, V view);
 

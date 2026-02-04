@@ -10,7 +10,10 @@ public class EnterCommand<V extends AbstractView> extends AbstractCommand<V> {
         this.keyword = "ENTERS";
     }
 
-     public String build(String id, Object... params){
+     public String build(String id, Object... params) throws InvalidArgumentNumberException {
+        if (params != null){
+            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 0 for ENTERS command)");
+        }
         return id + " " + this.keyword;
      }
 

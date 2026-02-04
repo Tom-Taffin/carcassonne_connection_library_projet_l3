@@ -10,7 +10,7 @@ public class ExpelCommand<V extends AbstractView> extends AbstractCommand<V> {
         this.keyword = "EXPELS";
     }
 
-    public String build(String id, Object... params){
+    public String build(String id, Object... params) throws InvalidArgumentNumberException {
         return id + " " + this.keyword + " " + params[0];
     }
 

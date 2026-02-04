@@ -10,7 +10,7 @@ public class OfferCommand<V extends AbstractView> extends AbstractCommand<V> {
         this.keyword = "OFFERS";
     }
 
-    public String build(String id, Object... params){
+    public String build(String id, Object... params) throws InvalidArgumentNumberException {
         StringBuilder stringBuilder = new StringBuilder(id).append(" ").append(this.keyword);
         for (Object o : params){
             stringBuilder.append(" ").append(o);

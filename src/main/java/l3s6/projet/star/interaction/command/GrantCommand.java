@@ -10,7 +10,7 @@ public class GrantCommand extends AbstractCommand<AdminView> {
         this.keyword = "GRANTS";
     }
 
-    public String build(String id, Object... params){
+    public String build(String id, Object... params) throws InvalidArgumentNumberException {
         /* format: id GRANTS id’ mot-clé+ */
         StringBuilder stringBuilder = new StringBuilder(id).append(" ").append(this.keyword);
         for (Object o : params){
