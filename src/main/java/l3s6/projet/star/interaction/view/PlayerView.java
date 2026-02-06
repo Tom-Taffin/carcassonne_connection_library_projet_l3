@@ -4,7 +4,6 @@ import java.net.URISyntaxException;
 
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.network.PlayerClient;
-import l3s6.projet.star.interaction.network.SpectatorClient;
 import l3s6.projet.star.interaction.router.GameListener;
 import l3s6.projet.star.interaction.router.PlayerRouter;
     

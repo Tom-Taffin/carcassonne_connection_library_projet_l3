@@ -1,8 +1,5 @@
 package l3s6.projet.star.interaction.router;
 
-import java.util.Arrays;
-import java.util.List;
-
 import l3s6.projet.star.interaction.command.*;
 import l3s6.projet.star.interaction.view.SpectatorView;
 

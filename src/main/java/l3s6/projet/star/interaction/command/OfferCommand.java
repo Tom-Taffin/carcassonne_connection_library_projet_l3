@@ -23,6 +23,6 @@ public class OfferCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(List<String> parts, V view){
-        view.updateOnOffer(parts.get(0), null, parts.subList(3, parts.size()));
+        view.updateOnOffer(parts.get(0), parts.get(2), parts.subList(3, parts.size()));
     }
 }

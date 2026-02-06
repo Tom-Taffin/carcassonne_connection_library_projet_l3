@@ -19,10 +19,11 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(List<String> parts, V view){
+        String tile = parts.get(2);
         String[] xy = parts.get(3).split(":");
         int x = Integer.parseInt(xy[0]);
         int y = Integer.parseInt(xy[1]);
         String meeple = parts.get(4);
-        view.updateOnPlace(parts.get(0), null /*TODO à faire quand les tiles sont dispo*/, x, y, meeple);
+        view.updateOnPlace(parts.get(0), tile, x, y, meeple);
     }
 }

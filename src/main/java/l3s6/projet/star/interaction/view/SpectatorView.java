@@ -1,9 +1,7 @@
 package l3s6.projet.star.interaction.view;
 
 import java.net.URISyntaxException;
-import java.util.List;
 
-import l3s6.projet.star.game.tile.Tile;
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.network.SpectatorClient;
 import l3s6.projet.star.interaction.router.GameListener;

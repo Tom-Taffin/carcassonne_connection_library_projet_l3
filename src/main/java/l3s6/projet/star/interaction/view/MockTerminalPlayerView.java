@@ -4,7 +4,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Scanner;
 
-import l3s6.projet.star.game.tile.Tile;
 import l3s6.projet.star.interaction.network.PlayerClient;
 
 public class MockTerminalPlayerView extends PlayerView<PlayerClient> {
@@ -13,11 +12,11 @@ public class MockTerminalPlayerView extends PlayerView<PlayerClient> {
         super(ipAddress, port, id);
     }
 
-    public void updateOnPlace(String player, Tile tile, int x, int y, String meeple){
+    public void updateOnPlace(String player, String tile, int x, int y, String meeple){
         System.out.println("Player " + player + " place the tile " + tile + " at coordinates " + x + ":" + y + " with the meeple " + meeple);
     }
 
-    public void updateOnOffer(String player, Tile tile, List<String> players){
+    public void updateOnOffer(String player, String tile, List<String> players){
         System.out.println("Players " + players + " receive the tile " + tile);
     }
 

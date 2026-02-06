@@ -2,7 +2,6 @@ package l3s6.projet.star.interaction.network;
 
 import java.net.URISyntaxException;
 
-import l3s6.projet.star.game.tile.Tile;
 import l3s6.projet.star.interaction.command.EnterCommand;
 import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
 import l3s6.projet.star.interaction.command.LeaveCommand;
@@ -43,7 +42,7 @@ public class PlayerClient extends SpectatorClient {
         }
     }
 
-    public void place(Tile tile, int x, int y, String meeple){
+    public void place(String tile, int x, int y, String meeple){
         try {
             PlaceCommand command = new PlaceCommand();
             this.cws.send(command.build(id, tile, x, y, meeple));

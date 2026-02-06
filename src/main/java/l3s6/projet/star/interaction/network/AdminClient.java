@@ -2,7 +2,6 @@ package l3s6.projet.star.interaction.network;
 
 import java.net.URISyntaxException;
 
-import l3s6.projet.star.game.tile.Tile;
 import l3s6.projet.star.interaction.command.*;
 import l3s6.projet.star.interaction.router.GameListener;
 
@@ -31,7 +30,7 @@ public class AdminClient extends PlayerClient {
         }
     }
 
-    public void offer(String player, Tile tile){
+    public void offer(String player, String tile){
         try {
             OfferCommand offerCommand = new OfferCommand();
             this.cws.send(offerCommand.build(id, player, tile));
