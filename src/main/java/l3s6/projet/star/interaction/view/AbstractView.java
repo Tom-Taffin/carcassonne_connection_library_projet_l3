@@ -47,4 +47,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnStart(String player);
 
+    public abstract void updateOnEnd(String player, List<String> ids);
+
 }

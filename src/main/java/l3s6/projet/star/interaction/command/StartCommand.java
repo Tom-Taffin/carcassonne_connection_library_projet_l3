@@ -18,6 +18,6 @@ public class StartCommand<V extends AbstractView> extends AbstractCommand<V> {
      }
 
      public void execute(List<String> parts, V view){
-         view.updateOnEnter(parts.get(0));
+         view.updateOnStart(parts.get(0));
      }
 }

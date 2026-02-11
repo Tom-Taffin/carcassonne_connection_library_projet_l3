@@ -75,4 +75,13 @@ public class AdminClient extends PlayerClient {
         }
     }
 
+    public void end(String... ids){
+        try {
+            EndCommand endCommand = new EndCommand();
+            this.cws.send(endCommand.build(id, ids));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
