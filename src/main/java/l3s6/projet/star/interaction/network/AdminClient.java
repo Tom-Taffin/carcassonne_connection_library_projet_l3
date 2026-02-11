@@ -57,4 +57,13 @@ public class AdminClient extends PlayerClient {
         }
     }
 
+    public void score(String other_id, int points){
+        try {
+            ScoreCommand scoreCommand = new ScoreCommand();
+            this.cws.send(scoreCommand.build(id, other_id, points));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

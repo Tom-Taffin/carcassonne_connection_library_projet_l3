@@ -43,4 +43,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnAgree(String player, List<String> exp_or_var);
 
+    public abstract void updateOnScore(String player, String other_id, int points);
+
 }
