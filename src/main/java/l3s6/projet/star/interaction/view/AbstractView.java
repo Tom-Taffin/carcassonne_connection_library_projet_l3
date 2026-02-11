@@ -45,4 +45,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnScore(String player, String other_id, int points);
 
+    public abstract void updateOnStart(String player);
+
 }

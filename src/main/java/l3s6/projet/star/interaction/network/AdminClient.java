@@ -66,4 +66,13 @@ public class AdminClient extends PlayerClient {
         }
     }
 
+    public void start(){
+        try {
+            StartCommand startCommand = new StartCommand();
+            this.cws.send(startCommand.build(id, null));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
