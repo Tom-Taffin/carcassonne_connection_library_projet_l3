@@ -41,4 +41,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnElect(String player, String role, List<String> ids);
 
+    public abstract void updateOnAgree(String player, List<String> exp_or_var);
+
 }
