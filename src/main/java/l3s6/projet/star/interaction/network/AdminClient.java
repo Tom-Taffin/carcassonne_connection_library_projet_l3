@@ -48,4 +48,13 @@ public class AdminClient extends PlayerClient {
         }
     }
 
+    public void elect(String role, String... ids){
+        try {
+            ElectCommand electCommand = new ElectCommand();
+            this.cws.send(electCommand.build(id, role, ids));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

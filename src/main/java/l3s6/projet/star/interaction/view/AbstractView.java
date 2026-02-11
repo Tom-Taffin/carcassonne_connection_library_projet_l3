@@ -39,4 +39,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnGrant(String player, String grantedPlayer, List<String> keywords);
 
+    public abstract void updateOnElect(String player, String role, List<String> ids);
+
 }
