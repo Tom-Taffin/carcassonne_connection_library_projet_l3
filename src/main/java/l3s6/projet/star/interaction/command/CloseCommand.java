@@ -18,6 +18,9 @@ public class CloseCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        view.updateOnClose(parts.get(0));
+        if (!parts.isEmpty()){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 0 for " + this.keyword + " command)");
+        }
+        view.updateOnClose(id);
     }
 }
