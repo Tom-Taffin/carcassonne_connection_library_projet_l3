@@ -34,7 +34,7 @@ public class EnterCommandTest extends AbstractCommandTest {
 
         this.command.execute(id, parts, mockView);
 
-        verify(mockView).updateOnEnter("Sam");
+        verify(mockView).updateOnEnter(id);
     }
 
     @Test

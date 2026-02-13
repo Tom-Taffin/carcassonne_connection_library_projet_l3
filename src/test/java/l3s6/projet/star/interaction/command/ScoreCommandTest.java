@@ -37,7 +37,7 @@ public class ScoreCommandTest extends AbstractCommandTest {
 
         this.command.execute(id, parts, mockView);
 
-        verify(mockView).updateOnScore("Sam", "Rem", 10);
+        verify(mockView).updateOnScore(id, "Rem", 10);
     }
 
     @Test

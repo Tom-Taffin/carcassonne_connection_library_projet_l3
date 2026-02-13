@@ -37,7 +37,7 @@ public class ExpelCommandTest extends AbstractCommandTest {
 
         this.command.execute(id, parts, mockView);
 
-        verify(mockView).updateOnExpel("Sam", "Rem");
+        verify(mockView).updateOnExpel(id, "Rem");
     }
 
     @Test

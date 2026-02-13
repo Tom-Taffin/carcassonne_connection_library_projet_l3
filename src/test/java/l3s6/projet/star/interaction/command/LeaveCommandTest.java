@@ -35,7 +35,7 @@ public class LeaveCommandTest extends AbstractCommandTest {
 
         this.command.execute(id, parts, mockView);
 
-        verify(mockView).updateOnLeave("Sam");
+        verify(mockView).updateOnLeave(id);
     }
 
     @Test

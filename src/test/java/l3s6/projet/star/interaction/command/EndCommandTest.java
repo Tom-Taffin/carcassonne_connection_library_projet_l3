@@ -35,11 +35,11 @@ public class EndCommandTest extends AbstractCommandTest {
 
         List<String> parts1 = Arrays.asList("Rem", "Tom");
         this.command.execute(id, parts1, mockView);
-        verify(mockView).updateOnEnd("Sam", parts1);
+        verify(mockView).updateOnEnd(id, parts1);
 
         List<String> parts2 = List.of();
         this.command.execute(id, parts2, mockView);
-        verify(mockView).updateOnEnd("Sam", parts2);
+        verify(mockView).updateOnEnd(id, parts2);
     }
 
     @Test

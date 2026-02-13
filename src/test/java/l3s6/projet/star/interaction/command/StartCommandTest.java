@@ -35,7 +35,7 @@ public class StartCommandTest extends AbstractCommandTest {
 
         this.command.execute(id, parts, mockView);
 
-        verify(mockView).updateOnStart("Sam");
+        verify(mockView).updateOnStart(id);
     }
 
     @Test

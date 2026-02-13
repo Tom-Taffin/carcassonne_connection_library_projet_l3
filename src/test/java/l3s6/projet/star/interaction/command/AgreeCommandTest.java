@@ -36,11 +36,11 @@ public class AgreeCommandTest extends AbstractCommandTest {
 
         List<String> parts1 = Arrays.asList("inns", "traders", "blitz");
         this.command.execute(id, parts1, mockView);
-        verify(mockView).updateOnAgree("Sam", parts1);
+        verify(mockView).updateOnAgree(id, parts1);
 
         List<String> parts2 = List.of();
         this.command.execute(id, parts2, mockView);
-        verify(mockView).updateOnAgree("Sam", parts2);
+        verify(mockView).updateOnAgree(id, parts2);
     }
 
     @Test

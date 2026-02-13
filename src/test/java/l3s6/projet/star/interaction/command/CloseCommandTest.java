@@ -35,7 +35,7 @@ public class CloseCommandTest extends AbstractCommandTest {
 
         this.command.execute(id, parts, mockView);
 
-        verify(mockView).updateOnClose("Sam");
+        verify(mockView).updateOnClose(id);
     }
 
     @Test
