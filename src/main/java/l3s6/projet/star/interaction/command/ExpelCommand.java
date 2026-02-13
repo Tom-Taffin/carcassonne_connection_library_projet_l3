@@ -18,6 +18,9 @@ public class ExpelCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        view.updateOnExpel(parts.get(0), parts.get(2));
+        if (parts.size() != 1){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 1 for " + this.keyword + " command)");
+        }
+        view.updateOnExpel(id, parts.get(0));
     }
 }

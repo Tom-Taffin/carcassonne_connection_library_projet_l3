@@ -18,6 +18,9 @@ public class ScoreCommand<V extends AbstractView> extends AbstractCommand<V> {
      }
 
      public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-         view.updateOnScore(parts.get(0), parts.get(2), Integer.parseInt(parts.get(3)));
+         if (parts.size() != 2){
+             throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 2 for " + this.keyword + " command)");
+         }
+         view.updateOnScore(id, parts.get(0), Integer.parseInt(parts.get(1)));
      }
 }
