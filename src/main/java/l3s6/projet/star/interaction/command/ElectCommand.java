@@ -30,6 +30,9 @@ public class ElectCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        view.updateOnElect(parts.get(0), parts.get(2), parts.subList(3, parts.size()));
+        if (parts.size() < 2){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 2 or more for " + this.keyword + " command)");
+        }
+        view.updateOnElect(id, parts.get(0), parts.subList(1, parts.size()));
     }
 }
