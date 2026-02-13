@@ -17,7 +17,10 @@ public class EnterCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword;
      }
 
-     public void execute(List<String> parts, V view){
-         view.updateOnEnter(parts.get(0));
+     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
+        if (!parts.isEmpty()){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 0 for ENTERS command)");
+        }
+        view.updateOnEnter(id);
      }
 }

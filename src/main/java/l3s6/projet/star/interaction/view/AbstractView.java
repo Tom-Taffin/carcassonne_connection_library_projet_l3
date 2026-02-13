@@ -25,28 +25,28 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     protected abstract AbstractClient createClient(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException;
 
-    public abstract void updateOnPlace(String player, String tile, int x, int y, String meeple);
+    public abstract void updateOnPlace(String id, String tile, int x, int y, String meeple);
 
-    public abstract void updateOnOffer(String player, String tile, List<String> players);
+    public abstract void updateOnOffer(String id, String tile, List<String> ids);
 
-    public abstract void updateOnEnter(String player);
+    public abstract void updateOnEnter(String id);
 
-    public abstract void updateOnLeave(String player);
+    public abstract void updateOnLeave(String id);
 
-    public abstract void updateOnClose(String player);
+    public abstract void updateOnClose(String id);
 
-    public abstract void updateOnExpel(String player, String expelledPlayer);
+    public abstract void updateOnExpel(String id, String expelledPlayer);
 
-    public abstract void updateOnGrant(String player, String grantedPlayer, List<String> keywords);
+    public abstract void updateOnGrant(String id, String grantedPlayer, List<String> keywords);
 
-    public abstract void updateOnElect(String player, String role, List<String> ids);
+    public abstract void updateOnElect(String id, String role, List<String> ids);
 
-    public abstract void updateOnAgree(String player, List<String> exp_or_var);
+    public abstract void updateOnAgree(String id, List<String> expOrVar);
 
-    public abstract void updateOnScore(String player, String other_id, int points);
+    public abstract void updateOnScore(String id, String otherId, int points);
 
-    public abstract void updateOnStart(String player);
+    public abstract void updateOnStart(String id);
 
-    public abstract void updateOnEnd(String player, List<String> ids);
+    public abstract void updateOnEnd(String id, List<String> ids);
 
 }

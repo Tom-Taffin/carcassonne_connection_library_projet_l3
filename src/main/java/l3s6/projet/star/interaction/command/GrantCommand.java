@@ -22,7 +22,7 @@ public class GrantCommand extends AbstractCommand<AdminView> {
         return stringBuilder.toString();
     }
 
-    public void execute(List<String> parts, AdminView view){
+    public void execute(String id, List<String> parts, AdminView view) throws InvalidArgumentNumberException {
         view.updateOnGrant(parts.get(0), parts.get(2), parts.subList(3, parts.size()));
     }
 }

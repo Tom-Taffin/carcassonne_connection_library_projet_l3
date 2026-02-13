@@ -17,7 +17,7 @@ public class ExpelCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword + " " + params[0];
     }
 
-    public void execute(List<String> parts, V view){
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         view.updateOnExpel(parts.get(0), parts.get(2));
     }
 }

@@ -20,4 +20,7 @@ public abstract class AbstractCommandTest {
     @Test
     public abstract void testIncorrectBuild() throws InvalidArgumentNumberException;
 
+    @Test
+    public abstract void testExecute() throws InvalidArgumentNumberException;
+
 }

@@ -8,7 +8,7 @@ public abstract class AbstractCommand<V> {
 
     public abstract String build(String id, Object... params) throws InvalidArgumentNumberException;
 
-    public abstract void execute(List<String> parts, V view);
+    public abstract void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException;
 
     public String getKeyword(){
         return this.keyword;

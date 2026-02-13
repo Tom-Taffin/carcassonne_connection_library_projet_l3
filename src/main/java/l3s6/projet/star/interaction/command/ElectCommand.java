@@ -29,7 +29,7 @@ public class ElectCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword + " " + params[0] + " " + ids;
     }
 
-    public void execute(List<String> parts, V view){
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         view.updateOnElect(parts.get(0), parts.get(2), parts.subList(3, parts.size()));
     }
 }

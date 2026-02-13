@@ -18,7 +18,7 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
         return String.format("%s %s %s %d:%d %s", id, this.keyword, params[0], params[1], params[2], params[3]);
     }
 
-    public void execute(List<String> parts, V view){
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         String tile = parts.get(2);
         String[] xy = parts.get(3).split(":");
         int x = Integer.parseInt(xy[0]);

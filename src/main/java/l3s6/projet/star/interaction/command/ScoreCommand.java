@@ -17,7 +17,7 @@ public class ScoreCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword + " " + params[0] + " " + params[1];
      }
 
-     public void execute(List<String> parts, V view){
+     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
          view.updateOnScore(parts.get(0), parts.get(2), Integer.parseInt(parts.get(3)));
      }
 }

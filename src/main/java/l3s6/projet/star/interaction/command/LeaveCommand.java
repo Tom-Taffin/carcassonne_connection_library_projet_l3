@@ -17,7 +17,7 @@ public class LeaveCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword;
      }
 
-     public void execute(List<String> parts, V view){
+     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
          view.updateOnLeave(parts.get(0));
      }
 }

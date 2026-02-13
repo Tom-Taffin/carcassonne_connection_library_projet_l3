@@ -22,7 +22,7 @@ public class OfferCommand<V extends AbstractView> extends AbstractCommand<V> {
         return stringBuilder.toString();
     }
 
-    public void execute(List<String> parts, V view){
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         view.updateOnOffer(parts.get(0), parts.get(2), parts.subList(3, parts.size()));
     }
 }

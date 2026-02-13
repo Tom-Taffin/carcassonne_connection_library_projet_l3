@@ -29,7 +29,7 @@ public class EndCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword + " " + ids;
     }
 
-    public void execute(List<String> parts, V view){
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         view.updateOnEnd(parts.get(0), parts.subList(2, parts.size()));
     }
 }

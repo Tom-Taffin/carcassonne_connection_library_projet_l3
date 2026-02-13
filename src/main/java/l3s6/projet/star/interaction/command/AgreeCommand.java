@@ -29,7 +29,7 @@ public class AgreeCommand<V extends AbstractView> extends AbstractCommand<V> {
         return id + " " + this.keyword + " " + exp_or_var;
     }
 
-    public void execute(List<String> parts, V view){
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         view.updateOnAgree(parts.get(0), parts.subList(2, parts.size()));
     }
 }
