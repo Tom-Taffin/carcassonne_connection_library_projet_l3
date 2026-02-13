@@ -33,7 +33,7 @@ public class ExpelCommandTest extends AbstractCommandTest {
     public void testCorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
-        List<String> parts = Arrays.asList("Rem");
+        List<String> parts = List.of("Rem");
 
         this.command.execute(id, parts, mockView);
 
@@ -45,7 +45,7 @@ public class ExpelCommandTest extends AbstractCommandTest {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
         List<String> invalidParts1 = List.of();
-        List<String> invalidParts2 = Arrays.asList("Rem", "invalid_part");
+        List<String> invalidParts2 = List.of("Rem", "invalid_part");
 
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts1, mockView); });
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts2, mockView); });

@@ -41,7 +41,7 @@ public class EnterCommandTest extends AbstractCommandTest {
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
-        List<String> invalidParts = Arrays.asList("invalid_part");
+        List<String> invalidParts = List.of("invalid_part");
 
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts, mockView); });
 

@@ -33,7 +33,7 @@ public class ScoreCommandTest extends AbstractCommandTest {
     public void testCorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
-        List<String> parts = Arrays.asList("Rem", "10");
+        List<String> parts = List.of("Rem", "10");
 
         this.command.execute(id, parts, mockView);
 
@@ -44,8 +44,8 @@ public class ScoreCommandTest extends AbstractCommandTest {
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
-        List<String> invalidParts1 = Arrays.asList("Rem");
-        List<String> invalidParts2 = Arrays.asList("Rem", "10", "invalid_part");
+        List<String> invalidParts1 = List.of("Rem");
+        List<String> invalidParts2 = List.of("Rem", "10", "invalid_part");
 
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts1, mockView); });
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts2, mockView); });

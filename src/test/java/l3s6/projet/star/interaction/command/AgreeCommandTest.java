@@ -34,7 +34,7 @@ public class AgreeCommandTest extends AbstractCommandTest {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
 
-        List<String> parts1 = Arrays.asList("inns", "traders", "blitz");
+        List<String> parts1 = List.of("inns", "traders", "blitz");
         this.command.execute(id, parts1, mockView);
         verify(mockView).updateOnAgree(id, parts1);
 
