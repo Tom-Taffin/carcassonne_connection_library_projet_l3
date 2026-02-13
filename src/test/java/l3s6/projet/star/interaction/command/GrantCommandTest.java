@@ -30,7 +30,7 @@ public class GrantCommandTest extends AbstractCommandTest {
 
     @Test
     public void testCorrectExecute() throws InvalidArgumentNumberException {
-        AbstractView mockView = mock(AbstractView.class);
+        AdminView mockView = mock(AdminView.class);
         String id = "Sam";
 
         List<String> parts1 = List.of("Rem", "CMD");
@@ -44,7 +44,7 @@ public class GrantCommandTest extends AbstractCommandTest {
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
-        AbstractView mockView = mock(AbstractView.class);
+        AdminView mockView = mock(AdminView.class);
         String id = "Sam";
         List<String> invalidParts1 = List.of();
         List<String> invalidParts2 = List.of("Rem");

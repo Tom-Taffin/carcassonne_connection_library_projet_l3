@@ -37,8 +37,6 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnExpel(String id, String expelledPlayer);
 
-    public abstract void updateOnGrant(String id, String grantedPlayer, List<String> keywords);
-
     public abstract void updateOnElect(String id, String role, List<String> ids);
 
     public abstract void updateOnAgree(String id, List<String> expOrVar);
