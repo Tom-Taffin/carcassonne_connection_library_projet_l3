@@ -33,16 +33,19 @@ public class AgreeCommandTest extends AbstractCommandTest {
     public void testCorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
-        List<String> parts = Arrays.asList("inns", "traders", "blitz");
 
-        this.command.execute(id, parts, mockView);
+        List<String> parts1 = Arrays.asList("inns", "traders", "blitz");
+        this.command.execute(id, parts1, mockView);
+        verify(mockView).updateOnAgree("Sam", parts1);
 
-        verify(mockView).updateOnAgree("Sam", parts);
+        List<String> parts2 = List.of();
+        this.command.execute(id, parts2, mockView);
+        verify(mockView).updateOnAgree("Sam", parts2);
     }
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
-        
+
     }
 
 }

@@ -32,11 +32,14 @@ public class EndCommandTest extends AbstractCommandTest {
     public void testCorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
-        List<String> parts = Arrays.asList("Rem", "Tom");
 
-        this.command.execute(id, parts, mockView);
+        List<String> parts1 = Arrays.asList("Rem", "Tom");
+        this.command.execute(id, parts1, mockView);
+        verify(mockView).updateOnEnd("Sam", parts1);
 
-        verify(mockView).updateOnEnd("Sam", parts);
+        List<String> parts2 = List.of();
+        this.command.execute(id, parts2, mockView);
+        verify(mockView).updateOnEnd("Sam", parts2);
     }
 
     @Test
