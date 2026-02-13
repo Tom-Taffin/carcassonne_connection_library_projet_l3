@@ -11,7 +11,7 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public String build(String id, Object... params) throws InvalidArgumentNumberException {
-        /* format: id PLACES tile x y meeple */
+        /* format: id PLACES tile x:y meeple */
         if (params == null || params.length != 4){
             throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 4 for PLACES command)");
         }
@@ -19,11 +19,14 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        String tile = parts.get(2);
-        String[] xy = parts.get(3).split(":");
+        if (parts.size() != 3){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 4 for " + this.keyword + " command)");
+        }
+        String tile = parts.get(0);
+        String[] xy = parts.get(1).split(":");
         int x = Integer.parseInt(xy[0]);
         int y = Integer.parseInt(xy[1]);
-        String meeple = parts.get(4);
-        view.updateOnPlace(parts.get(0), tile, x, y, meeple);
+        String meeple = parts.get(2);
+        view.updateOnPlace(id, tile, x, y, meeple);
     }
 }
