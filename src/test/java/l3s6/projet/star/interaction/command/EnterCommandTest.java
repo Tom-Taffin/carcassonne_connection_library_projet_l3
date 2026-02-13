@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import l3s6.projet.star.interaction.view.AbstractView;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,12 +27,25 @@ public class EnterCommandTest extends AbstractCommandTest {
     }
 
     @Test
-    public void testExecute() throws InvalidArgumentNumberException {
+    public void testCorrectExecute() throws InvalidArgumentNumberException {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
         List<String> parts = List.of();
+
         this.command.execute(id, parts, mockView);
+
         verify(mockView).updateOnEnter("Sam");
+    }
+
+    @Test
+    public void testIncorrectExecute() throws InvalidArgumentNumberException {
+        AbstractView mockView = mock(AbstractView.class);
+        String id = "Sam";
+        List<String> invalidParts = Arrays.asList("invalid_part");
+
+        assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts, mockView); });
+
+        verify(mockView, never()).updateOnEnter(anyString());
     }
 
 }
