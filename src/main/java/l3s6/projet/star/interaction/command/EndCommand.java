@@ -30,6 +30,6 @@ public class EndCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        view.updateOnEnd(parts.get(0), parts.subList(2, parts.size()));
+        view.updateOnEnd(id, parts);
     }
 }

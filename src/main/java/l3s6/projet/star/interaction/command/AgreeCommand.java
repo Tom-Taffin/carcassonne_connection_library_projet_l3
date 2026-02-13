@@ -30,6 +30,6 @@ public class AgreeCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        view.updateOnAgree(parts.get(0), parts.subList(2, parts.size()));
+        view.updateOnAgree(id, parts);
     }
 }
