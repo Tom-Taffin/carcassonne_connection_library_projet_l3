@@ -1,6 +1,5 @@
 # carcassonne_connection_library
 
-TODO : PLACES COMMAND  
+TODO : PLACES COMMAND  (méthode `execute()` commencée, à terminer plus tard)  
 TODO : BLAMES COMMAND  
-TODO : OFFERS COMMAND  
 TODO : COLLECTS COMMAND

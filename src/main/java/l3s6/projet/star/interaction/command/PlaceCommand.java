@@ -11,16 +11,22 @@ public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public String build(String id, Object... params) throws InvalidArgumentNumberException {
-        /* format: id PLACES tile x:y meeple */
-        if (params == null || params.length != 4){
-            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 4 for PLACES command)");
+        /* format: id PLACES id' tile x y */
+        /* format: id PLACES id' tile x y meeple_type meeple_position */
+        if (params == null || (params.length != 4 && params.length != 6)){
+            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 4 or 6 for " + this.keyword + " command)");
         }
-        return String.format("%s %s %s %d:%d %s", id, this.keyword, params[0], params[1], params[2], params[3]);
+        if (params.length == 4){
+            return String.format("%s %s %s %s %d:%d", id, this.keyword, params[0], params[1], params[2], params[3]);
+        }
+        else {
+            return String.format("%s %s %s %s %d:%d %s %s", id, this.keyword, params[0], params[1], params[2], params[3], params[4], params[5]);
+        }
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        if (parts.size() != 3){
-            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 4 for " + this.keyword + " command)");
+        if (parts.size() != 4 && parts.size() != 6){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 4 or 6 for " + this.keyword + " command)");
         }
         String tile = parts.get(0);
         String[] xy = parts.get(1).split(":");
