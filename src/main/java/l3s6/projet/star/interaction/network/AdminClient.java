@@ -30,15 +30,6 @@ public class AdminClient extends PlayerClient {
         }
     }
 
-    public void offer(String player, String tile){
-        try {
-            OfferCommand offerCommand = new OfferCommand();
-            this.cws.send(offerCommand.build(id, player, tile));
-        } catch (InvalidArgumentNumberException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void close(){
         try {
             CloseCommand closeCommand = new CloseCommand();
@@ -79,6 +70,15 @@ public class AdminClient extends PlayerClient {
         try {
             EndCommand endCommand = new EndCommand();
             this.cws.send(endCommand.build(id, ids));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void offer(String other_id, String tile){
+        try {
+            OfferCommand offerCommand = new OfferCommand();
+            this.cws.send(offerCommand.build(id, other_id, tile));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
         }

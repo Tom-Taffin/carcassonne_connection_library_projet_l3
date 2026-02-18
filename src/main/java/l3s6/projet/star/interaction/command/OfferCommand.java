@@ -11,21 +11,17 @@ public class OfferCommand<V extends AbstractView> extends AbstractCommand<V> {
     }
 
     public String build(String id, Object... params) throws InvalidArgumentNumberException {
-        /* format: id OFFERS tile id+ */
-        if (params == null || params.length < 2){
-            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 2 or more for OFFERS command)");
+        /* format: id OFFERS id' tile */
+        if (params == null || params.length != 2){
+            throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 2 for OFFERS command)");
         }
-        StringBuilder stringBuilder = new StringBuilder(id).append(" ").append(this.keyword);
-        for (Object o : params){
-            stringBuilder.append(" ").append(o);
-        }
-        return stringBuilder.toString();
+        return id + " " + this.keyword + " " + params[0] + " " + params[1];
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        if (parts.size() < 2){
-            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 2 or more for " + this.keyword + " command)");
+        if (parts.size() != 2){
+            throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 2 for " + this.keyword + " command)");
         }
-        view.updateOnOffer(id, parts.get(0), parts.subList(1, parts.size()));
+        view.updateOnOffer(id, parts.get(0), parts.get(1));
     }
 }

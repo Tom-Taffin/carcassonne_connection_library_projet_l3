@@ -26,6 +26,7 @@ public class OfferCommandTest extends AbstractCommandTest {
     public void testIncorrectBuild() {
         assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", null);});
         assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", "Rem");});
+        assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", "Rem", "f-f-f-f", "wrong argument");});
     }
 
     @Test
@@ -33,13 +34,9 @@ public class OfferCommandTest extends AbstractCommandTest {
         AbstractView mockView = mock(AbstractView.class);
         String id = "Sam";
 
-        List<String> parts1 = List.of("f-f-f-f", "Rem");
+        List<String> parts1 = List.of("Rem", "f-f-f-f");
         this.command.execute(id, parts1, mockView);
-        verify(mockView).updateOnOffer(id, parts1.get(0), parts1.subList(1, parts1.size()));
-
-        List<String> parts2 = List.of("f-f-f-f", "Rem", "Sam", "Tom");
-        this.command.execute(id, parts2, mockView);
-        verify(mockView).updateOnOffer(id, parts1.get(0), parts2.subList(1, parts2.size()));
+        verify(mockView).updateOnOffer(id, parts1.get(0), parts1.get(1));
     }
 
     @Test
@@ -48,11 +45,13 @@ public class OfferCommandTest extends AbstractCommandTest {
         String id = "Sam";
         List<String> invalidParts1 = List.of();
         List<String> invalidParts2 = List.of("f-f-f-f");
+        List<String> invalidParts3 = List.of("Sam", "f-f-f-f", "wrong argument");
 
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts1, mockView); });
         assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts2, mockView); });
+        assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts3, mockView); });
 
-        verify(mockView, never()).updateOnOffer(anyString(), anyString(), anyList());
+        verify(mockView, never()).updateOnOffer(anyString(), anyString(), anyString());
     }
 
 }

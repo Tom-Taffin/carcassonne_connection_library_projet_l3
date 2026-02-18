@@ -27,7 +27,7 @@ public abstract class AbstractView<T extends AbstractClient> {
 
     public abstract void updateOnPlace(String id, String tile, int x, int y, String meeple);
 
-    public abstract void updateOnOffer(String id, String tile, List<String> ids);
+    public abstract void updateOnOffer(String id, String other_id, String tile);
 
     public abstract void updateOnEnter(String id);
 
