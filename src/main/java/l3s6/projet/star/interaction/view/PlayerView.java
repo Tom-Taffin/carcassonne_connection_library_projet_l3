@@ -18,7 +18,7 @@ public abstract class PlayerView<T extends PlayerClient> extends SpectatorView<T
     }
 
     protected GameListener createRouter(){
-        return new PlayerRouter(this);
+        return new PlayerRouter<>(this);
     }
 
     protected AbstractClient createClient(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException {

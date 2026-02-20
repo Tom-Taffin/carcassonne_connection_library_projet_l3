@@ -4,7 +4,7 @@ import l3s6.projet.star.interaction.view.AdminView;
 
 import java.util.List;
 
-public class GrantCommand extends AbstractCommand<AdminView> {
+public class GrantCommand<V extends AdminView<?>> extends AbstractCommand<V> {
 
     public GrantCommand(){
         this.keyword = "GRANTS";
@@ -22,7 +22,7 @@ public class GrantCommand extends AbstractCommand<AdminView> {
         return stringBuilder.toString();
     }
 
-    public void execute(String id, List<String> parts, AdminView view) throws InvalidArgumentNumberException {
+    public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
         if (parts.size() < 2){
             throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 2 or more for " + this.keyword + " command)");
         }

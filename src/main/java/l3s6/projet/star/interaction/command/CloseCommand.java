@@ -1,10 +1,10 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
+import l3s6.projet.star.interaction.view.SpectatorView;
 
 import java.util.List;
 
-public class CloseCommand<V extends AbstractView> extends AbstractCommand<V> {
+public class CloseCommand<V extends SpectatorView<?>> extends AbstractCommand<V> {
 
     public CloseCommand(){
         this.keyword = "CLOSES";

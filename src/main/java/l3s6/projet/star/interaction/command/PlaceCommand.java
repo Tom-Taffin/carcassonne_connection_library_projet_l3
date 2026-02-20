@@ -1,10 +1,10 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
+import l3s6.projet.star.interaction.view.SpectatorView;
 
 import java.util.List;
 
-public class PlaceCommand<V extends AbstractView> extends AbstractCommand<V> {
+public class PlaceCommand<V extends SpectatorView<?>> extends AbstractCommand<V> {
 
     public PlaceCommand(){
         this.keyword = "PLACES";

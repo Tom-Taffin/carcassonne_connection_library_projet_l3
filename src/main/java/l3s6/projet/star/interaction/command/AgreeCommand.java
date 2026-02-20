@@ -1,10 +1,10 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
+import l3s6.projet.star.interaction.view.SpectatorView;
 
 import java.util.List;
 
-public class AgreeCommand<V extends AbstractView> extends AbstractCommand<V> {
+public class AgreeCommand<V extends SpectatorView<?>> extends AbstractCommand<V> {
 
     public AgreeCommand(){
         this.keyword = "AGREES";

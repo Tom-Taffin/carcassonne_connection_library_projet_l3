@@ -23,7 +23,7 @@ public class PlayerClient extends SpectatorClient {
 
     public void enter(){
         try {
-            EnterCommand command = new EnterCommand();
+            EnterCommand<?> command = new EnterCommand<>();
             this.cws.send(command.build(id, null));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class PlayerClient extends SpectatorClient {
 
     public void leave() {
         try {
-            LeaveCommand command = new LeaveCommand();
+            LeaveCommand<?> command = new LeaveCommand<>();
             this.cws.send(command.build(id, null));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class PlayerClient extends SpectatorClient {
 
     public void place(String tile, int x, int y, String meeple){
         try {
-            PlaceCommand command = new PlaceCommand();
+            PlaceCommand<?> command = new PlaceCommand<>();
             this.cws.send(command.build(id, tile, x, y, meeple));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class PlayerClient extends SpectatorClient {
 
     public void agree(String... exp_or_var){
         try {
-            AgreeCommand agreeCommand = new AgreeCommand();
+            AgreeCommand<?> agreeCommand = new AgreeCommand<>();
             this.cws.send(agreeCommand.build(id, exp_or_var));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();

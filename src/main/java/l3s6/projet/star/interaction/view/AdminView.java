@@ -8,14 +8,14 @@ import l3s6.projet.star.interaction.router.AdminRouter;
 import java.net.URISyntaxException;
 import java.util.List;
 
-public abstract class AdminView extends PlayerView<AdminClient> {
+public abstract class AdminView<T extends AdminClient> extends PlayerView<T> {
 
     public AdminView(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException{
         super(ipAddress, port, id);
     }
 
     protected GameListener createRouter(){
-        return new AdminRouter(this);
+        return new AdminRouter<>(this);
     }
 
     protected AbstractClient createClient(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException {

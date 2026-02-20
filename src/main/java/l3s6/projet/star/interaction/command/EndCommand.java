@@ -1,10 +1,10 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
+import l3s6.projet.star.interaction.view.SpectatorView;
 
 import java.util.List;
 
-public class EndCommand<V extends AbstractView> extends AbstractCommand<V> {
+public class EndCommand<V extends SpectatorView<?>> extends AbstractCommand<V> {
 
     public EndCommand(){
         this.keyword = "ENDS";

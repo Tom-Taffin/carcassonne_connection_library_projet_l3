@@ -14,7 +14,7 @@ public class AdminClient extends PlayerClient {
 
     public void expel(String expelledPlayer){
         try {
-            ExpelCommand expelCommand = new ExpelCommand();
+            ExpelCommand<?> expelCommand = new ExpelCommand<>();
             this.cws.send(expelCommand.build(id, expelledPlayer));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -23,7 +23,7 @@ public class AdminClient extends PlayerClient {
 
     public void grant(String grantedPlayer, String... keywords){
         try {
-            GrantCommand grantCommand = new GrantCommand();
+            GrantCommand<?> grantCommand = new GrantCommand<>();
             this.cws.send(grantCommand.build(id, grantedPlayer, keywords));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class AdminClient extends PlayerClient {
 
     public void close(){
         try {
-            CloseCommand closeCommand = new CloseCommand();
+            CloseCommand<?> closeCommand = new CloseCommand<>();
             this.cws.send(closeCommand.build(id));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class AdminClient extends PlayerClient {
 
     public void elect(String role, String... ids){
         try {
-            ElectCommand electCommand = new ElectCommand();
+            ElectCommand<?> electCommand = new ElectCommand<>();
             this.cws.send(electCommand.build(id, role, ids));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class AdminClient extends PlayerClient {
 
     public void score(String other_id, int points){
         try {
-            ScoreCommand scoreCommand = new ScoreCommand();
+            ScoreCommand<?> scoreCommand = new ScoreCommand<>();
             this.cws.send(scoreCommand.build(id, other_id, points));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class AdminClient extends PlayerClient {
 
     public void start(){
         try {
-            StartCommand startCommand = new StartCommand();
+            StartCommand<?> startCommand = new StartCommand<>();
             this.cws.send(startCommand.build(id, null));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class AdminClient extends PlayerClient {
 
     public void end(String... ids){
         try {
-            EndCommand endCommand = new EndCommand();
+            EndCommand<?> endCommand = new EndCommand<>();
             this.cws.send(endCommand.build(id, ids));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class AdminClient extends PlayerClient {
 
     public void offer(String other_id, String tile){
         try {
-            OfferCommand offerCommand = new OfferCommand();
+            OfferCommand<?> offerCommand = new OfferCommand<>();
             this.cws.send(offerCommand.build(id, other_id, tile));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();

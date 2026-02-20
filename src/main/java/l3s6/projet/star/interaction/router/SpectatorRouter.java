@@ -3,9 +3,9 @@ package l3s6.projet.star.interaction.router;
 import l3s6.projet.star.interaction.command.*;
 import l3s6.projet.star.interaction.view.SpectatorView;
 
-public class SpectatorRouter extends AbstractRouter<SpectatorView<?>>{
+public class SpectatorRouter<V extends SpectatorView<?>> extends AbstractRouter<V>{
     
-    public SpectatorRouter(SpectatorView<?> view){
+    public SpectatorRouter(V view){
         super(view);
         this.commands.add(new AgreeCommand<>());
         this.commands.add(new CloseCommand<>());

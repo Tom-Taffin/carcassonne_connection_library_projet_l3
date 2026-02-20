@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class AbstractRouter<V extends AbstractView<?>> implements GameListener{
     
     protected V view;
-    protected List<AbstractCommand> commands;
+    protected List<AbstractCommand<? super V>> commands;
 
     public AbstractRouter(V view){
         this.view = view;
@@ -22,7 +22,7 @@ public abstract class AbstractRouter<V extends AbstractView<?>> implements GameL
         List<String> messageArray = Arrays.asList(message.split(" "));
         String id = messageArray.get(0);
         String keyword = messageArray.get(1);
-        for (AbstractCommand command : this.commands){
+        for (AbstractCommand<? super V> command : this.commands){
             if (command.getKeyword().equals(keyword)){
                 try {
                     command.execute(id, messageArray.subList(2, messageArray.size()), view);
