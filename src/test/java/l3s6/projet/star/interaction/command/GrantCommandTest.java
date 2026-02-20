@@ -1,20 +1,17 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
-import l3s6.projet.star.interaction.view.AdminView;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
+import l3s6.projet.star.interaction.view.AdminView;
 
-public class GrantCommandTest extends AbstractCommandTest {
+public class GrantCommandTest extends AbstractCommandTest<AdminView<?>> {
 
-    public AbstractCommand getCommand(){
-        return new GrantCommand();
+    public AbstractCommand<AdminView<?>> getCommand(){
+        return new GrantCommand<>();
     }
 
     @Test
@@ -30,7 +27,7 @@ public class GrantCommandTest extends AbstractCommandTest {
 
     @Test
     public void testCorrectExecute() throws InvalidArgumentNumberException {
-        AdminView mockView = mock(AdminView.class);
+        AdminView<?> mockView = mock(AdminView.class);
         String id = "Sam";
 
         List<String> parts1 = List.of("Rem", "CMD");
@@ -44,7 +41,7 @@ public class GrantCommandTest extends AbstractCommandTest {
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
-        AdminView mockView = mock(AdminView.class);
+        AdminView<?> mockView = mock(AdminView.class);
         String id = "Sam";
         List<String> invalidParts1 = List.of();
         List<String> invalidParts2 = List.of("Rem");

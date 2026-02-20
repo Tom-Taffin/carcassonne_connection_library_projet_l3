@@ -3,16 +3,18 @@ package l3s6.projet.star.interaction.command;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public abstract class AbstractCommandTest {
+import l3s6.projet.star.interaction.view.AbstractView;
 
-    protected AbstractCommand command;
+public abstract class AbstractCommandTest<V extends AbstractView<?>> {
+
+    protected AbstractCommand<V> command;
 
     @BeforeEach
     public void init(){
         this.command = this.getCommand();
     }
 
-    public abstract AbstractCommand getCommand();
+    public abstract AbstractCommand<V> getCommand();
 
     @Test
     public abstract void testCorrectBuild() throws InvalidArgumentNumberException;

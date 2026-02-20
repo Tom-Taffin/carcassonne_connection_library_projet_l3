@@ -1,21 +1,17 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 import java.util.List;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
+import l3s6.projet.star.interaction.view.SpectatorView;
 
-public class ExpelCommandTest extends AbstractCommandTest {
+public class ExpelCommandTest extends AbstractCommandTest<SpectatorView<?>> {
 
-    public AbstractCommand getCommand(){
-        return new ExpelCommand();
+    public AbstractCommand<SpectatorView<?>> getCommand(){
+        return new ExpelCommand<>();
     }
 
     @Test
@@ -31,7 +27,7 @@ public class ExpelCommandTest extends AbstractCommandTest {
 
     @Test
     public void testCorrectExecute() throws InvalidArgumentNumberException {
-        AbstractView mockView = mock(AbstractView.class);
+        SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
         List<String> parts = List.of("Rem");
 
@@ -42,7 +38,7 @@ public class ExpelCommandTest extends AbstractCommandTest {
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
-        AbstractView mockView = mock(AbstractView.class);
+        SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
         List<String> invalidParts1 = List.of();
         List<String> invalidParts2 = List.of("Rem", "invalid_part");

@@ -1,20 +1,17 @@
 package l3s6.projet.star.interaction.command;
 
-import l3s6.projet.star.interaction.view.AbstractView;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 import java.util.List;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
+import l3s6.projet.star.interaction.view.SpectatorView;
 
-public class CloseCommandTest extends AbstractCommandTest {
+public class CloseCommandTest extends AbstractCommandTest<SpectatorView<?>> {
 
-    public AbstractCommand getCommand(){
-        return new CloseCommand();
+    public AbstractCommand<SpectatorView<?>> getCommand(){
+        return new CloseCommand<>();
     }
 
     @Test
@@ -29,7 +26,7 @@ public class CloseCommandTest extends AbstractCommandTest {
 
     @Test
     public void testCorrectExecute() throws InvalidArgumentNumberException {
-        AbstractView mockView = mock(AbstractView.class);
+        SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
         List<String> parts = List.of();
 
@@ -40,7 +37,7 @@ public class CloseCommandTest extends AbstractCommandTest {
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
-        AbstractView mockView = mock(AbstractView.class);
+        SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
         List<String> invalidParts = List.of("invalid_part");
 
