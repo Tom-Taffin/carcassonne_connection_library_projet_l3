@@ -16,38 +16,42 @@ public class PlaceCommandTest extends AbstractCommandTest<SpectatorView<?>> {
 
     @Test
     public void testCorrectBuild() throws InvalidArgumentNumberException {
-        assertEquals("Sam PLACES f-f-f-f 2:3 bleu" ,this.command.build("Sam", "f-f-f-f", 2, 3, "bleu"));
+        // format : id PLACES id' tile x:y  (4 params)
+        assertEquals("Sam PLACES Rem f-f-f-f 2:3", this.command.build("Sam", "Rem", "f-f-f-f", 2, 3));
+        // format : id PLACES id' tile x:y meeple_type meeple_position  (6 params)
+        assertEquals("Sam PLACES Rem f-f-f-f 2:3 FARMER TOP", this.command.build("Sam", "Rem", "f-f-f-f", 2, 3, "FARMER", "TOP"));
     }
 
     @Test
-    public void testIncorrectBuild() {
-        assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", null);});
-        assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", "f-f-f-f", 2, 3);});
-        assertThrows(InvalidArgumentNumberException.class , () -> {this.command.build("Sam", "f-f-f-f", 2, 3, "bleu", "wrong argument");});
+    public void testIncorrectBuild() throws InvalidArgumentNumberException {
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", (Object[]) null));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", "Rem", "f-f-f-f", 2));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", "Rem", "f-f-f-f", 2, 3, "FARMER"));
     }
 
     @Test
     public void testCorrectExecute() throws InvalidArgumentNumberException {
         SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
-        List<String> parts = List.of("f-f-f-f", "2:3", "meep");
-
+        List<String> parts = List.of("Rem", "f-f-f-f", "2", "3");
         this.command.execute(id, parts, mockView);
+        verify(mockView).updateOnPlace("Sam", "Rem", "f-f-f-f", 2, 3);
+        verify(mockView, never()).updateOnPlaceWithMeeple(anyString(), anyString(), anyString(), anyInt(), anyInt(), anyString(), anyString());
 
-        verify(mockView).updateOnPlace(id, parts.get(0), 2, 3, parts.get(2));
+        List<String> partsWithMeeple = List.of("Rem", "f-f-f-f", "2", "3", "FARMER", "TOP");
+        this.command.execute(id, partsWithMeeple, mockView);
+        verify(mockView).updateOnPlaceWithMeeple("Sam", "Rem", "f-f-f-f", 2, 3, "FARMER", "TOP");
     }
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
         SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
-        List<String> invalidParts1 = List.of("f-f-f-f", "2:3");
-        List<String> invalidParts2 = List.of("f-f-f-f", "2:3", "meep", "invalid_part");
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "f-f-f-f", "2"), mockView));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "f-f-f-f", "2", "3", "FARMER"), mockView));
 
-        assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts1, mockView); });
-        assertThrows(InvalidArgumentNumberException.class, () -> { this.command.execute(id, invalidParts2, mockView); });
-
-        verify(mockView, never()).updateOnPlace(anyString(), anyString(), anyInt(), anyInt(), anyString());
+        verify(mockView, never()).updateOnPlace(anyString(), anyString(), anyString(), anyInt(), anyInt());
+        verify(mockView, never()).updateOnPlaceWithMeeple(anyString(), anyString(), anyString(), anyInt(), anyInt(), anyString(), anyString());
     }
 
 }

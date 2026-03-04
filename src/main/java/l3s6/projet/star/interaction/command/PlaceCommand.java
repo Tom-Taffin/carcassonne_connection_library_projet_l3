@@ -28,11 +28,17 @@ public class PlaceCommand<V extends SpectatorView<?>> extends AbstractCommand<V>
         if (parts.size() != 4 && parts.size() != 6){
             throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 4 or 6 for " + this.keyword + " command)");
         }
-        String tile = parts.get(0);
-        String[] xy = parts.get(1).split(":");
-        int x = Integer.parseInt(xy[0]);
-        int y = Integer.parseInt(xy[1]);
-        String meeple = parts.get(2);
-        view.updateOnPlace(id, tile, x, y, meeple);
+        String other_id = parts.get(0);
+        String tile = parts.get(1);
+        int x = Integer.parseInt(parts.get(2));
+        int y = Integer.parseInt(parts.get(3));
+        if (parts.size() == 4){
+            view.updateOnPlace(id, other_id, tile, x, y);
+        }
+        if (parts.size() == 6) {
+            String meeple_type = parts.get(4);
+            String meeple_position = parts.get(5);
+            view.updateOnPlaceWithMeeple(id, other_id, tile, x, y, meeple_type, meeple_position);
+        }
     }
 }
