@@ -18,6 +18,9 @@ public class BlameCommand<V extends SpectatorView<?>> extends AbstractCommand<V>
             throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 1 or 2 for " + this.keyword + " command)");
         }
         if (params.length == 2){
+            if (params[0] instanceof Integer) {
+                throw new InvalidArgumentNumberException("Invalid arguments: 2 params requires id' and reason, not an integer for " + this.keyword + " command");
+            }
             return String.format("%s %s %s %s", id, this.keyword, params[0], params[1]);
         }
         else {
