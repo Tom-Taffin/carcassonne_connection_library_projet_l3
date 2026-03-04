@@ -30,11 +30,15 @@ public abstract class SpectatorView<T extends SpectatorClient> extends AbstractV
         return new SpectatorClient(ipAddress, port, this.dispatcher);
     }
     
-    public abstract void updateOnPlace(String id, String other_id, String tile, int x, int y);
+    public abstract void updateOnPlace(String id, String player, String tile, int x, int y);
 
-    public abstract void updateOnPlaceWithMeeple(String id, String other_id, String tile, int x, int y, String meeple_type, String meeple_position);
+    public abstract void updateOnPlaceWithMeeple(String id, String player, String tile, int x, int y, String meeple_type, String meeple_position);
 
-    public abstract void updateOnOffer(String id, String other_id, String tile);
+    public abstract void updateOnBlame(String id, int amount);
+
+    public abstract void updateOnBlameWithReason(String id, String player, String reason);
+
+    public abstract void updateOnOffer(String id, String player, String tile);
 
     public abstract void updateOnEnter(String id);
 

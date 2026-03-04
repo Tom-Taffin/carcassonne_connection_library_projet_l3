@@ -57,15 +57,15 @@ public class PlayerClient extends SpectatorClient {
 
     /**
      * Sends a place command
-     * @param other_id
+     * @param player
      * @param tile
      * @param x
      * @param y
      */
-    public void place(String other_id, String tile, int x, int y){
+    public void place(String player, String tile, int x, int y){
         try {
             PlaceCommand<?> placeCommand = new PlaceCommand<>();
-            this.cws.send(placeCommand.build(id, other_id, tile, x, y));
+            this.cws.send(placeCommand.build(id, player, tile, x, y));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
         }
@@ -73,17 +73,17 @@ public class PlayerClient extends SpectatorClient {
 
     /**
      * Sends a place command with meeple
-     * @param other_id
+     * @param player
      * @param tile
      * @param x
      * @param y
      * @param meeple_type
      * @param meeple_position
      */
-    public void place(String other_id, String tile, int x, int y, String meeple_type, String meeple_position){
+    public void place(String player, String tile, int x, int y, String meeple_type, String meeple_position){
         try {
             PlaceCommand<?> placeCommand = new PlaceCommand<>();
-            this.cws.send(placeCommand.build(id, other_id, tile, x, y, meeple_type, meeple_position));
+            this.cws.send(placeCommand.build(id, player, tile, x, y, meeple_type, meeple_position));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
         }

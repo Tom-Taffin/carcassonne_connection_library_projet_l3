@@ -114,10 +114,37 @@ public class AdminClient extends PlayerClient {
      * @param player the player that receive the tile
      * @param tile a tile
      */
-    public void offer(String other_id, String tile){
+    public void offer(String player, String tile){
         try {
             OfferCommand<?> offerCommand = new OfferCommand<>();
-            this.cws.send(offerCommand.build(id, other_id, tile));
+            this.cws.send(offerCommand.build(id, player, tile));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sends a blame command
+     * @param player the player that receive the tile
+     * @param reason the reason of the blame
+     */
+    public void blame(String player, String reason){
+        try {
+            BlameCommand<?> blameCommand = new BlameCommand<>();
+            this.cws.send(blameCommand.build(id, player, reason));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sends a blame command
+     * @param amount the amount of blames authorized
+     */
+    public void blame(int amount){
+        try {
+            BlameCommand<?> blameCommand = new BlameCommand<>();
+            this.cws.send(blameCommand.build(id, amount));
         } catch (InvalidArgumentNumberException e) {
             e.printStackTrace();
         }
