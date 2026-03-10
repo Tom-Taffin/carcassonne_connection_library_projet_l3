@@ -28,19 +28,22 @@ public class CollectCommand<V extends SpectatorView<?>> extends AbstractCommand<
     }
 
     public void execute(String id, List<String> parts, V view) throws InvalidArgumentNumberException {
-        if (parts.size() != 2 && parts.size() != 3){
+        if (parts.size() != 2 && parts.size() != 3) {
             throw new InvalidArgumentNumberException("Invalid number of arguments received (must be 2 or 3 for " + this.keyword + " command)");
         }
-        if (parts.size() == 3){
-            String player = parts.get(0);
-            String meeple_type = parts.get(1);
-            int amount = Integer.parseInt(parts.get(2));
-            view.updateOnCollectWithAmount(id, player, meeple_type, amount);
-        }
-        if (parts.size() == 2) {
-            String player = parts.get(0);
-            String meeple_type = parts.get(1);
-            view.updateOnCollect(id, player, meeple_type);
+        try {
+            if (parts.size() == 3) {
+                String player = parts.get(0);
+                String meeple_type = parts.get(1);
+                int amount = Integer.parseInt(parts.get(2));
+                view.updateOnCollectWithAmount(id, player, meeple_type, amount);
+            } else if (parts.size() == 2) {
+                String player = parts.get(0);
+                String meeple_type = parts.get(1);
+                view.updateOnCollect(id, player, meeple_type);
+            }
+        } catch (NumberFormatException e) {
+            throw new InvalidArgumentNumberException("The third argument must be an integer.");
         }
     }
 }

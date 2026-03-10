@@ -1,3 +1,3 @@
 # carcassonne_connection_library
 
-TODO : COLLECTS COMMAND
+TODO : rien (pour le moment)
