@@ -38,6 +38,10 @@ public abstract class SpectatorView<T extends SpectatorClient> extends AbstractV
 
     public abstract void updateOnBlameWithReason(String id, String player, String reason);
 
+    public abstract void updateOnCollect(String id, String player, String meeple_type);
+
+    public abstract void updateOnCollectWithAmount(String id, String player, String meeple_type, int amount);
+
     public abstract void updateOnOffer(String id, String player, String tile);
 
     public abstract void updateOnEnter(String id);

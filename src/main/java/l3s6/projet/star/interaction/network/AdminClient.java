@@ -150,4 +150,28 @@ public class AdminClient extends PlayerClient {
         }
     }
 
+    /**
+     * Sends a collect command
+     */
+    public void collect(String player, String meeple_type){
+        try {
+            CollectCommand<?> collectCommand = new CollectCommand<>();
+            this.cws.send(collectCommand.build(id, player, meeple_type));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sends a collect command
+     */
+    public void collect(String player, String meeple_type, int amount){
+        try {
+            CollectCommand<?> collectCommand = new CollectCommand<>();
+            this.cws.send(collectCommand.build(id, player, meeple_type, amount));
+        } catch (InvalidArgumentNumberException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
