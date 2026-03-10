@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -49,11 +50,14 @@ public class BlameCommandTest extends AbstractCommandTest<SpectatorView<?>> {
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
         SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
+        // pas assez d'arguments
         assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of(), mockView));
+        // trop d'arguments
         assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "illegal-position", "wrong argument"), mockView));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "5", "wrong argument"), mockView));
 
-        verify(mockView, never()).updateOnPlace(anyString(), anyString(), anyString(), anyInt(), anyInt());
-        verify(mockView, never()).updateOnPlaceWithMeeple(anyString(), anyString(), anyString(), anyInt(), anyInt(), anyString(), anyString());
+        verify(mockView, never()).updateOnBlame(anyString(), anyInt());
+        verify(mockView, never()).updateOnBlameWithReason(anyString(), anyString(), anyString());
     }
 
 }
