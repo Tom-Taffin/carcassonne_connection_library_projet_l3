@@ -12,7 +12,7 @@ public class PlayerClient extends SpectatorClient {
 
     /**
      * A player connect the same way as {@link AbstractClient}
-     * It also as a unique id, specified in arguments, that is send to the server as the first message using {@link #enter}
+     * It also as a unique id, specified in arguments, that is send to the server as the first message enter
      */
     public PlayerClient(String ip, int port, String id, GameListener updateListener) throws URISyntaxException, InterruptedException{
         super(ip, port, updateListener);
@@ -25,7 +25,7 @@ public class PlayerClient extends SpectatorClient {
     }
 
     /**
-     * Before closing the socket (see {@link AbstractClient#close}), sends a leave message using {@link #leave}
+     * Before closing the socket (see {@link AbstractClient#close}), sends a leave message
      */
     @Override
     public void close(){
