@@ -21,7 +21,11 @@ public class PlayerClient extends SpectatorClient {
         this.commands.add(new LeaveCommand<>());
         this.commands.add(new PlaceCommand<>());
         this.commands.add(new AgreeCommand<>());
-        try { this.send("ENTERS"); } catch(InvalidArgumentNumberException e){System.out.println("jvnfdkjvbf");}
+        try {
+            this.send("ENTERS"); 
+        } catch(InvalidArgumentNumberException e){
+            System.out.println("ENTERS command didn't work");
+        }
     }
 
     /**

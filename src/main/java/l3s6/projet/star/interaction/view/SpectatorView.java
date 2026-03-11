@@ -6,6 +6,7 @@ import java.util.List;
 import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.network.SpectatorClient;
+import l3s6.projet.star.interaction.role.Role;
 import l3s6.projet.star.interaction.router.GameListener;
 import l3s6.projet.star.interaction.router.SpectatorRouter;
     
@@ -32,11 +33,19 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
     }
     
     public void updateOnPlace(String id, String player, String tile, int x, int y) {
-        System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d.", id, player, tile, x, y));
+        if (this.roleManager.isRole(id, Role.PLAYER)){
+            System.out.println(String.format("[%s] Player %s wants to place tile %s on position %d:%d.", id, player, tile, x, y));
+        } else if (this.roleManager.isRole(id, Role.REFEREE)){
+            System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d.", id, player, tile, x, y));
+        }
     }
 
     public void updateOnPlaceWithMeeple(String id, String player, String tile, int x, int y, String meeple_type, String meeple_position) {
-        System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d with meeple %s on position %s.", id, player, tile, x, y, meeple_type, meeple_position));
+        if (this.roleManager.isRole(id, Role.PLAYER)){
+            System.out.println(String.format("[%s] Player %s wants to place tile %s on position %d:%d with meeple %s on position %s.", id, player, tile, x, y, meeple_type, meeple_position));
+        } else if (this.roleManager.isRole(id, Role.REFEREE)){
+            System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d with meeple %s on position %s.", id, player, tile, x, y, meeple_type, meeple_position));
+        }
     }
 
     public void updateOnBlame(String id, int amount) {
@@ -76,11 +85,18 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
     }
 
     public void updateOnElect(String id, String role, List<String> ids) {
+        for (String i : ids) {
+            this.roleManager.addRole(i, Role.getRoleFromString(role));
+        }
         System.out.println(String.format("[%s] Players %s gained the role %s.", id, ids, role));
     }
 
     public void updateOnAgree(String id, List<String> expOrVar) {
-        System.out.println(String.format("[%s] The expansions and variations %s are chosen for this game.", id, expOrVar.toString()));
+        if (this.roleManager.isRole(id, Role.PLAYER)){
+            System.out.println(String.format("[%s] %s supports the following expansions and variations : %s", id, id, expOrVar.toString()));
+        } else if (this.roleManager.isRole(id, Role.REFEREE)){
+            System.out.println(String.format("[%s] The expansions and variations %s are chosen for this game.", id, expOrVar.toString()));
+        }
     }
 
     public void updateOnScore(String id, String otherId, int points) {
