@@ -3,6 +3,7 @@ package l3s6.projet.star.interaction.view;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.network.SpectatorClient;
 import l3s6.projet.star.interaction.router.GameListener;
@@ -94,9 +95,9 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
         System.out.println(String.format("[%s] The game ends. Winners : %s.", id, ids.toString()));
     }
 
-    public static void main(String[] args) {
-        String host = "127.0.0.1";
-        int port = 5000;
+    public static void main(String[] args) throws InvalidArgumentNumberException {
+        String host = "localhost";
+        int port = 3000;
         String pseudo = "Test";
 
         try {
