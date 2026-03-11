@@ -17,9 +17,9 @@ public class PlaceCommandTest extends AbstractCommandTest<SpectatorView<?>> {
     @Test
     public void testCorrectBuild() throws InvalidArgumentNumberException {
         // format : id PLACES id' tile x:y  (4 params)
-        assertEquals("Sam PLACES Rem f-f-f-f 2:3", this.command.build("Sam", "Rem", "f-f-f-f", 2, 3));
+        assertEquals("Sam PLACES Rem f-f-f-f 2 3", this.command.build("Sam", "Rem", "f-f-f-f", 2, 3));
         // format : id PLACES id' tile x:y meeple_type meeple_position  (6 params)
-        assertEquals("Sam PLACES Rem f-f-f-f 2:3 FARMER TOP", this.command.build("Sam", "Rem", "f-f-f-f", 2, 3, "FARMER", "TOP"));
+        assertEquals("Sam PLACES Rem f-f-f-f 2 3 FARMER TOP", this.command.build("Sam", "Rem", "f-f-f-f", 2, 3, "FARMER", "TOP"));
     }
 
     @Test

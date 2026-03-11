@@ -3,12 +3,13 @@ package l3s6.projet.star.interaction.view;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.network.SpectatorClient;
 import l3s6.projet.star.interaction.router.GameListener;
 import l3s6.projet.star.interaction.router.SpectatorRouter;
     
-public abstract class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
+public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
 
     public SpectatorView(String ipAddress, int port) throws URISyntaxException, InterruptedException {
         super(ipAddress, port, null);
@@ -30,36 +31,82 @@ public abstract class SpectatorView<T extends SpectatorClient> extends AbstractV
         return new SpectatorClient(ipAddress, port, this.dispatcher);
     }
     
-    public abstract void updateOnPlace(String id, String player, String tile, int x, int y);
+    public void updateOnPlace(String id, String player, String tile, int x, int y) {
+        System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d.", id, player, tile, x, y));
+    }
 
-    public abstract void updateOnPlaceWithMeeple(String id, String player, String tile, int x, int y, String meeple_type, String meeple_position);
+    public void updateOnPlaceWithMeeple(String id, String player, String tile, int x, int y, String meeple_type, String meeple_position) {
+        System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d with meeple %s on position %s.", id, player, tile, x, y, meeple_type, meeple_position));
+    }
 
-    public abstract void updateOnBlame(String id, int amount);
+    public void updateOnBlame(String id, int amount) {
+        System.out.println(String.format("[%s] %d blames are authorized for this game.", id, amount));
+    }
 
-    public abstract void updateOnBlameWithReason(String id, String player, String reason);
+    public void updateOnBlameWithReason(String id, String player, String reason) {
+        System.out.println(String.format("[%s] Player %s was blamed for the reason %s.", id, player, reason));
+    }
 
-    public abstract void updateOnCollect(String id, String player, String meeple_type);
+    public void updateOnCollect(String id, String player, String meeple_type) {
+        System.out.println(String.format("[%s] Player %s collects a meeple %s.", id, player, meeple_type));
+    }
 
-    public abstract void updateOnCollectWithAmount(String id, String player, String meeple_type, int amount);
+    public void updateOnCollectWithAmount(String id, String player, String meeple_type, int amount) {
+        System.out.println(String.format("[%s] Player %s collects %d meeples %s.", id, player, amount, meeple_type));
+    }
 
-    public abstract void updateOnOffer(String id, String player, String tile);
+    public void updateOnOffer(String id, String player, String tile) {
+        System.out.println(String.format("[%s] Player %s gets the tile %s.", id, player, tile));
+    }
 
-    public abstract void updateOnEnter(String id);
+    public void updateOnEnter(String id) {
+        System.out.println(String.format("[%s] %s enters.", id, id));
+    }
 
-    public abstract void updateOnLeave(String id);
+    public void updateOnLeave(String id) {
+        System.out.println(String.format("[%s] %s leaves.", id, id));
+    }
 
-    public abstract void updateOnClose(String id);
+    public void updateOnClose(String id)  {
+        System.out.println(String.format("[%s] %s closes.", id, id));
+    }
 
-    public abstract void updateOnExpel(String id, String expelledPlayer);
+    public void updateOnExpel(String id, String expelledPlayer) {
+        System.out.println(String.format("[%s] Player %s was expelled.", id, expelledPlayer));
+    }
 
-    public abstract void updateOnElect(String id, String role, List<String> ids);
+    public void updateOnElect(String id, String role, List<String> ids) {
+        System.out.println(String.format("[%s] Players %s gained the role %s.", id, ids, role));
+    }
 
-    public abstract void updateOnAgree(String id, List<String> expOrVar);
+    public void updateOnAgree(String id, List<String> expOrVar) {
+        System.out.println(String.format("[%s] The expansions and variations %s are chosen for this game.", id, expOrVar.toString()));
+    }
 
-    public abstract void updateOnScore(String id, String otherId, int points);
+    public void updateOnScore(String id, String otherId, int points) {
+        System.out.println(String.format("[%s] Player %s gains %d points.", id, otherId, points));
+    }
 
-    public abstract void updateOnStart(String id);
+    public void updateOnStart(String id) {
+        System.out.println(String.format("[%s] The game starts.", id));
+    }
 
-    public abstract void updateOnEnd(String id, List<String> ids);
+    public void updateOnEnd(String id, List<String> ids) {
+        System.out.println(String.format("[%s] The game ends. Winners : %s.", id, ids.toString()));
+    }
+
+    public static void main(String[] args) throws InvalidArgumentNumberException {
+        if (args.length != 2){
+            throw new InvalidArgumentNumberException("Usage : <Host IP> <Port>");
+        }
+        String host = args[0];
+        int port = Integer.parseInt(args[1]);
+
+        try {
+            SpectatorView<?> view = new SpectatorView<>(host, port);
+        } catch (URISyntaxException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

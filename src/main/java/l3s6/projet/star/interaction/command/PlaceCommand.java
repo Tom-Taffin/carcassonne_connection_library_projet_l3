@@ -17,10 +17,10 @@ public class PlaceCommand<V extends SpectatorView<?>> extends AbstractCommand<V>
             throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 4 or 6 for " + this.keyword + " command)");
         }
         if (params.length == 4){
-            return String.format("%s %s %s %s %d:%d", id, this.keyword, params[0], params[1], params[2], params[3]);
+            return String.format("%s %s %s %s %d %d", id, this.keyword, params[0], params[1], params[2], params[3]);
         }
         else {
-            return String.format("%s %s %s %s %d:%d %s %s", id, this.keyword, params[0], params[1], params[2], params[3], params[4], params[5]);
+            return String.format("%s %s %s %s %d %d %s %s", id, this.keyword, params[0], params[1], params[2], params[3], params[4], params[5]);
         }
     }
 
