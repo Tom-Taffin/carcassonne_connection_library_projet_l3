@@ -1,6 +1,7 @@
 package l3s6.projet.star.interaction.view;
 
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Scanner;
 
 import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
@@ -47,7 +48,13 @@ public class PlayerView<T extends PlayerClient> extends SpectatorView<T> {
                 if (input.equalsIgnoreCase("quit")) {
                     running = false;
                 } else {
-                    view.client.send("PLACES", "Rem", "Nf-f-f-f", 1, 2);
+                    try{
+                        List<String> splitInput = List.of(input.split(" "));
+                        view.client.send(splitInput.get(0), splitInput.subList(1, splitInput.size()));
+                    } catch (InvalidArgumentNumberException e) {
+                        System.out.println(e);
+                    }
+                    
                 }
             }
 

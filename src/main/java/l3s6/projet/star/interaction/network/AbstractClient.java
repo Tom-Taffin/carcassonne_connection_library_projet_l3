@@ -36,12 +36,16 @@ public abstract class AbstractClient {
 
     public void send(String commandName, Object... params) throws InvalidArgumentNumberException{
         for (AbstractCommand<?> command : this.commands){
-            if (command.getKeyword() == commandName){
+            if (command.getKeyword().equals(commandName)){
                 command.send(cws, id, params);
                 return;
             }
         }
         throw new InvalidArgumentNumberException("command not found");
+    }
+
+    public void send(String commandName, List<String> params) throws InvalidArgumentNumberException{
+        this.send(commandName, params.toArray());
     }
 
 }
