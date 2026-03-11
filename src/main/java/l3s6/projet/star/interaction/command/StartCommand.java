@@ -11,7 +11,7 @@ public class StartCommand<V extends SpectatorView<?>> extends AbstractCommand<V>
     }
 
      public String build(String id, Object... params) throws InvalidArgumentNumberException {
-        if (params != null){
+        if (params != null && params.length != 0){
             throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 0 for " + this.keyword + " command)");
         }
         return id + " " + this.keyword;

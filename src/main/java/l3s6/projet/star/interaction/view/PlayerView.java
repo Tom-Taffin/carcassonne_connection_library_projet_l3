@@ -47,7 +47,7 @@ public class PlayerView<T extends PlayerClient> extends SpectatorView<T> {
                 if (input.equalsIgnoreCase("quit")) {
                     running = false;
                 } else {
-                    view.client.place(playerID, "Wf-f-f-f", 1, 2);
+                    view.client.send("PLACES", "Rem", "Nf-f-f-f", 1, 2);
                 }
             }
 

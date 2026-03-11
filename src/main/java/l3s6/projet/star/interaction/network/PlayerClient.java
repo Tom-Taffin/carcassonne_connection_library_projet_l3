@@ -17,11 +17,11 @@ public class PlayerClient extends SpectatorClient {
     public PlayerClient(String ip, int port, String id, GameListener updateListener) throws URISyntaxException, InterruptedException{
         super(ip, port, updateListener);
         this.id = id;
-        try { this.send("ENTERS"); } catch(InvalidArgumentNumberException e){}
         this.commands.add(new EnterCommand<>());
         this.commands.add(new LeaveCommand<>());
         this.commands.add(new PlaceCommand<>());
         this.commands.add(new AgreeCommand<>());
+        try { this.send("ENTERS"); } catch(InvalidArgumentNumberException e){System.out.println("jvnfdkjvbf");}
     }
 
     /**

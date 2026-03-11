@@ -34,9 +34,9 @@ public abstract class AbstractClient {
         this.cws.close();
     }
 
-    public void send(Object... params) throws InvalidArgumentNumberException{
+    public void send(String commandName, Object... params) throws InvalidArgumentNumberException{
         for (AbstractCommand<?> command : this.commands){
-            if (command.getKeyword() == params[0]){
+            if (command.getKeyword() == commandName){
                 command.send(cws, id, params);
                 return;
             }
