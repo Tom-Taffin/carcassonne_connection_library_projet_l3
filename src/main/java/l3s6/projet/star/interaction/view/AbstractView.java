@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.router.GameListener;
+import l3s6.projet.star.interaction.role.RoleManager;
     
 public abstract class AbstractView<T extends AbstractClient> {
 
