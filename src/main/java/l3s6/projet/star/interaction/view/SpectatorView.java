@@ -96,12 +96,14 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
     }
 
     public static void main(String[] args) throws InvalidArgumentNumberException {
-        String host = "localhost";
-        int port = 3000;
-        String pseudo = "Test";
+        if (args.length != 2){
+            throw new InvalidArgumentNumberException("Usage : <Host IP> <Port>");
+        }
+        String host = args[0];
+        int port = Integer.parseInt(args[1]);
 
         try {
-            SpectatorView<?> view = new SpectatorView<>(host, port, pseudo);
+            SpectatorView<?> view = new SpectatorView<>(host, port);
         } catch (URISyntaxException | InterruptedException e) {
             e.printStackTrace();
         }
