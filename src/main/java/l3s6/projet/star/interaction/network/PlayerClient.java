@@ -10,8 +10,6 @@ import l3s6.projet.star.interaction.router.GameListener;
  */
 public class PlayerClient extends SpectatorClient {
 
-    String id;
-
     /**
      * A player connect the same way as {@link AbstractClient}
      * It also as a unique id, specified in arguments, that is send to the server as the first message using {@link #enter}
@@ -19,7 +17,11 @@ public class PlayerClient extends SpectatorClient {
     public PlayerClient(String ip, int port, String id, GameListener updateListener) throws URISyntaxException, InterruptedException{
         super(ip, port, updateListener);
         this.id = id;
-        this.enter();
+        try { this.send("ENTERS"); } catch(InvalidArgumentNumberException e){}
+        this.commands.add(new EnterCommand<>());
+        this.commands.add(new LeaveCommand<>());
+        this.commands.add(new PlaceCommand<>());
+        this.commands.add(new AgreeCommand<>());
     }
 
     /**
@@ -27,79 +29,12 @@ public class PlayerClient extends SpectatorClient {
      */
     @Override
     public void close(){
-        this.leave();
-        super.close();
-    }
-
-    /**
-     * Sends an enter command
-     */
-    public void enter(){
         try {
-            EnterCommand<?> enterCommand = new EnterCommand<>();
-            this.cws.send(enterCommand.build(id, null));
-        } catch (InvalidArgumentNumberException e) {
-            e.printStackTrace();
+            this.send("LEAVES");
+            super.close();
+        } catch(InvalidArgumentNumberException e){
+            
         }
     }
-
-    /**
-     * Sends a leave command
-     */
-    public void leave() {
-        try {
-            LeaveCommand<?> leaveCommand = new LeaveCommand<>();
-            this.cws.send(leaveCommand.build(id, null));
-        } catch (InvalidArgumentNumberException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Sends a place command
-     * @param player
-     * @param tile
-     * @param x
-     * @param y
-     */
-    public void place(String player, String tile, int x, int y){
-        try {
-            PlaceCommand<?> placeCommand = new PlaceCommand<>();
-            this.cws.send(placeCommand.build(id, player, tile, x, y));
-        } catch (InvalidArgumentNumberException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Sends a place command with meeple
-     * @param player
-     * @param tile
-     * @param x
-     * @param y
-     * @param meeple_type
-     * @param meeple_position
-     */
-    public void place(String player, String tile, int x, int y, String meeple_type, String meeple_position){
-        try {
-            PlaceCommand<?> placeCommand = new PlaceCommand<>();
-            this.cws.send(placeCommand.build(id, player, tile, x, y, meeple_type, meeple_position));
-        } catch (InvalidArgumentNumberException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Sends an agree command
-     * @param exp_or_var All expansions and variations the player is supporting
-     */
-    public void agree(String... exp_or_var){
-        try {
-            AgreeCommand<?> agreeCommand = new AgreeCommand<>();
-            this.cws.send(agreeCommand.build(id, exp_or_var));
-        } catch (InvalidArgumentNumberException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
 }

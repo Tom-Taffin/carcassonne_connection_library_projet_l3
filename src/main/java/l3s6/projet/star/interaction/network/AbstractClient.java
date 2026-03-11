@@ -1,6 +1,11 @@
 package l3s6.projet.star.interaction.network;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+
+import l3s6.projet.star.interaction.command.AbstractCommand;
+import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
 import l3s6.projet.star.interaction.router.GameListener;
 
 /**
@@ -8,7 +13,9 @@ import l3s6.projet.star.interaction.router.GameListener;
  */
 public abstract class AbstractClient {
 
-    GameSocket cws;
+    protected GameSocket cws;
+    protected String id;
+    protected List<AbstractCommand<?>> commands;
 
     /**
      * At creation, the client creates a socket {@link GameSocket} and connects to the specified in arguments
@@ -17,6 +24,7 @@ public abstract class AbstractClient {
     public AbstractClient(String ip, int port, GameListener updateListener) throws URISyntaxException, InterruptedException{
         this.cws = new GameSocket(ip, port, updateListener);
         this.cws.connectBlocking();
+        this.commands = new ArrayList<>();
     }
 
     /**
@@ -24,6 +32,16 @@ public abstract class AbstractClient {
      */
     public void close(){
         this.cws.close();
+    }
+
+    public void send(Object... params) throws InvalidArgumentNumberException{
+        for (AbstractCommand<?> command : this.commands){
+            if (command.getKeyword() == params[0]){
+                command.send(cws, id, params);
+                return;
+            }
+        }
+        throw new InvalidArgumentNumberException("command not found");
     }
 
 }
