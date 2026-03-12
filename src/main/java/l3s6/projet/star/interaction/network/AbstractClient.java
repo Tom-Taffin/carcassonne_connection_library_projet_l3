@@ -44,8 +44,4 @@ public abstract class AbstractClient {
         throw new InvalidArgumentNumberException("command not found");
     }
 
-    public void send(String commandName, List<String> params) throws InvalidArgumentNumberException{
-        this.send(commandName, params.toArray());
-    }
-
 }

@@ -50,7 +50,7 @@ public class PlayerView<T extends PlayerClient> extends SpectatorView<T> {
                 } else {
                     try{
                         List<String> splitInput = List.of(input.split(" "));
-                        view.client.send(splitInput.get(0), splitInput.subList(1, splitInput.size()));
+                        view.send(splitInput.get(0), splitInput.subList(1, splitInput.size()));
                     } catch (InvalidArgumentNumberException e) {
                         System.out.println(e);
                     }

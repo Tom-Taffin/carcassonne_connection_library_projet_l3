@@ -1,7 +1,9 @@
 package l3s6.projet.star.interaction.view;
 
 import java.net.URISyntaxException;
+import java.util.List;
 
+import l3s6.projet.star.interaction.command.InvalidArgumentNumberException;
 import l3s6.projet.star.interaction.network.AbstractClient;
 import l3s6.projet.star.interaction.router.GameListener;
 import l3s6.projet.star.interaction.role.RoleManager;
@@ -13,8 +15,8 @@ public abstract class AbstractView<T extends AbstractClient> {
     protected RoleManager roleManager;
 
     public AbstractView(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException{
-        this.connect(ipAddress, port, id);
         this.roleManager = new RoleManager();
+        this.connect(ipAddress, port, id);
     }
 
     @SuppressWarnings("unchecked")
@@ -26,5 +28,13 @@ public abstract class AbstractView<T extends AbstractClient> {
     protected abstract GameListener createRouter();
 
     protected abstract AbstractClient createClient(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException;
+
+    public void send(String commandName, Object... params) throws InvalidArgumentNumberException{
+        this.client.send(commandName, params);
+    }
+    
+    public void send(String commandName, List<String> params) throws InvalidArgumentNumberException{
+        this.client.send(commandName, params.toArray());
+    }
 
 }

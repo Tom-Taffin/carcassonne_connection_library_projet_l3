@@ -69,6 +69,7 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
     }
 
     public void updateOnEnter(String id) {
+        this.roleManager.addRole(id, Role.SPECTATOR);
         System.out.println(String.format("[%s] %s enters.", id, id));
     }
 
