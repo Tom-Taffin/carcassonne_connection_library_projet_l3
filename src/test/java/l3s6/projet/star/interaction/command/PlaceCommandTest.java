@@ -33,22 +33,22 @@ public class PlaceCommandTest extends AbstractCommandTest<SpectatorView<?>> {
     public void testCorrectExecute() throws InvalidArgumentNumberException {
         SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
-        List<String> parts = List.of("Rem", "f-f-f-f", "2", "3");
+        List<String> parts = List.of("Rem", "W", "2", "3");
         this.command.execute(id, parts, mockView);
-        verify(mockView).updateOnPlace("Sam", "Rem", "f-f-f-f", 2, 3);
+        verify(mockView).updateOnPlace("Sam", "Rem", "W", 2, 3);
         verify(mockView, never()).updateOnPlaceWithMeeple(anyString(), anyString(), anyString(), anyInt(), anyInt(), anyString(), anyString());
 
-        List<String> partsWithMeeple = List.of("Rem", "f-f-f-f", "2", "3", "FARMER", "TOP");
+        List<String> partsWithMeeple = List.of("Rem", "W", "2", "3", "FARMER", "TOP");
         this.command.execute(id, partsWithMeeple, mockView);
-        verify(mockView).updateOnPlaceWithMeeple("Sam", "Rem", "f-f-f-f", 2, 3, "FARMER", "TOP");
+        verify(mockView).updateOnPlaceWithMeeple("Sam", "Rem", "W", 2, 3, "FARMER", "TOP");
     }
 
     @Test
     public void testIncorrectExecute() throws InvalidArgumentNumberException {
         SpectatorView<?> mockView = mock(SpectatorView.class);
         String id = "Sam";
-        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "f-f-f-f", "2"), mockView));
-        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "f-f-f-f", "2", "3", "FARMER"), mockView));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "W", "2"), mockView));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.execute(id, List.of("Rem", "W", "2", "3", "FARMER"), mockView));
 
         verify(mockView, never()).updateOnPlace(anyString(), anyString(), anyString(), anyInt(), anyInt());
         verify(mockView, never()).updateOnPlaceWithMeeple(anyString(), anyString(), anyString(), anyInt(), anyInt(), anyString(), anyString());
