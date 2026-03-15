@@ -13,9 +13,11 @@ public abstract class AbstractView<T extends AbstractClient> {
     protected T client;
     protected GameListener dispatcher;
     protected RoleManager roleManager;
+    protected String id;
 
     public AbstractView(String ipAddress, int port, String id) throws URISyntaxException, InterruptedException{
         this.roleManager = new RoleManager();
+        this.id = id;
         this.connect(ipAddress, port, id);
     }
 
