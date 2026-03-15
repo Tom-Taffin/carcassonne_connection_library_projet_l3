@@ -32,19 +32,19 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
         return new SpectatorClient(ipAddress, port, this.dispatcher);
     }
     
-    public void updateOnPlace(String id, String player, String tile, int x, int y) {
+    public void updateOnPlace(String id, String player, String orientation, int x, int y) {
         if (this.roleManager.isRole(id, Role.PLAYER)){
-            System.out.println(String.format("[%s] Player %s wants to place tile %s on position %d:%d.", id, player, tile, x, y));
+            System.out.println(String.format("[%s] Player %s wants to place the tile with the orientation %s on position %d:%d.", id, player, orientation, x, y));
         } else if (this.roleManager.isRole(id, Role.REFEREE)){
-            System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d.", id, player, tile, x, y));
+            System.out.println(String.format("[%s] Player %s places the tile with the orientation %s on position %d:%d.", id, player, orientation, x, y));
         }
     }
 
-    public void updateOnPlaceWithMeeple(String id, String player, String tile, int x, int y, String meeple_type, String meeple_position) {
+    public void updateOnPlaceWithMeeple(String id, String player, String orientation, int x, int y, String meeple_type, String meeple_position) {
         if (this.roleManager.isRole(id, Role.PLAYER)){
-            System.out.println(String.format("[%s] Player %s wants to place tile %s on position %d:%d with meeple %s on position %s.", id, player, tile, x, y, meeple_type, meeple_position));
+            System.out.println(String.format("[%s] Player %s wants to place the tile with the orientation %s on position %d:%d with meeple %s on position %s.", id, player, orientation, x, y, meeple_type, meeple_position));
         } else if (this.roleManager.isRole(id, Role.REFEREE)){
-            System.out.println(String.format("[%s] Player %s places tile %s on position %d:%d with meeple %s on position %s.", id, player, tile, x, y, meeple_type, meeple_position));
+            System.out.println(String.format("[%s] Player %s places the tile with the orientation %s on position %d:%d with meeple %s on position %s.", id, player, orientation, x, y, meeple_type, meeple_position));
         }
     }
 
