@@ -21,6 +21,7 @@ public class PlayerClient extends SpectatorClient {
         this.commands.add(new LeaveCommand<>());
         this.commands.add(new PlaceCommand<>());
         this.commands.add(new AgreeCommand<>());
+        this.commands.add(new PlayCommand<>());
         try {
             this.send("ENTERS"); 
         } catch(InvalidArgumentNumberException e){

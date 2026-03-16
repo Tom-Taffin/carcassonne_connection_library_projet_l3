@@ -112,6 +112,10 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
         System.out.println(String.format("[%s] The game ends. Winners : %s.", id, ids.toString()));
     }
 
+    public void updateOnPlay(String id) {
+        System.out.println(String.format("[%s] %s will play in this game.", id));
+    }
+
     public static void main(String[] args) throws InvalidArgumentNumberException {
         if (args.length != 2){
             throw new InvalidArgumentNumberException("Usage : <Host IP> <Port>");
