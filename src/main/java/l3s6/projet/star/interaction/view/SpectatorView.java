@@ -113,7 +113,7 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
     }
 
     public void updateOnPlay(String id) {
-        System.out.println(String.format("[%s] %s will play in this game.", id));
+        System.out.println(String.format("[%s] %s will play in this game.", id, id));
     }
 
     public static void main(String[] args) throws InvalidArgumentNumberException {
