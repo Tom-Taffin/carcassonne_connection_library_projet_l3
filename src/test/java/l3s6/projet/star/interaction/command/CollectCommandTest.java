@@ -29,10 +29,8 @@ public class CollectCommandTest extends AbstractCommandTest<SpectatorView<?>> {
     public void testIncorrectBuild() throws InvalidArgumentNumberException {
         // pas assez d'arguments
         assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", (Object[]) null));
-        // trop d'arguments
-        assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", "Rem", "regular", 5, "wrong argument"));
         // argument incorrect (String à la place d'un int)
-        assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", "Rem", "regular", "5"));
+        assertThrows(InvalidArgumentNumberException.class, () -> this.command.build("Sam", "Rem", "regular", 5, 2, "wrong argument"));
     }
 
     @Test

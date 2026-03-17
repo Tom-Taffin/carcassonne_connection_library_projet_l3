@@ -17,16 +17,11 @@ public class CollectCommand<V extends SpectatorView<?>> extends AbstractCommand<
             throw new InvalidArgumentNumberException("Invalid number of arguments given (must be 3 or 4 for " + this.keyword + " command)");
         }
         if (params.length == 3){
-            if (!(params[2] instanceof Integer)){
-                throw new InvalidArgumentNumberException("argument not integer");
-            }
-            return String.format("%s %s %s %s %d", id, this.keyword, params[0], params[1], params[2]);
+            System.out.println(params[2]);
+            return String.format("%s %s %s %s %s", id, this.keyword, params[0], params[1], params[2].toString());
         }
         else {
-            if (!(params[2] instanceof Integer) || !(params[3] instanceof Integer)){
-                throw new InvalidArgumentNumberException("argument not integer");
-            }
-            return String.format("%s %s %s %s %d %d", id, this.keyword, params[0], params[1], params[2], params[3]);
+            return String.format("%s %s %s %s %s %s", id, this.keyword, params[0], params[1], params[2].toString(), params[3].toString());
         }
     }
 
