@@ -56,11 +56,11 @@ public class SpectatorView<T extends SpectatorClient> extends AbstractView<T> {
         System.out.println(String.format("[%s] Player %s was blamed for the reason %s.", id, player, reason));
     }
 
-    public void updateOnCollect(String id, String player, String meeple_type) {
-        System.out.println(String.format("[%s] Player %s collects a meeple %s.", id, player, meeple_type));
+    public void updateOnCollect(String id, String player, String meeple_type, int x, int y) {
+        System.out.println(String.format("[%s] Player %s collects the meeple %s at position %d:%d.", id, player, meeple_type, x, y));
     }
 
-    public void updateOnCollectWithAmount(String id, String player, String meeple_type, int amount) {
+    public void updateOnCollectAtStart(String id, String player, String meeple_type, int amount) {
         System.out.println(String.format("[%s] Player %s collects %d meeples %s.", id, player, amount, meeple_type));
     }
 
