@@ -1,0 +1,262 @@
+@startuml
+
+abstract class l3s6.projet.star.interaction.command.AbstractCommand {
+	{field} #keyword : String
+	{method}  {abstract} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method}  {abstract} +execute ( paramString1 : String , paramList2 : java.util.List , paramAbstractView3 : l3s6.projet.star.interaction.view.AbstractView ) : void
+	{method} +send ( paramGameSocket1 : l3s6.projet.star.interaction.network.GameSocket , paramString2 : String , paramObject;3 : [Ljava.lang.Object; ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.AgreeCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.BlameCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.CloseCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.CollectCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.ElectCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.EndCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.EnterCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.ExpelCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.GrantCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramAdminView3 : l3s6.projet.star.interaction.view.AdminView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.InvalidArgumentNumberException {
+}
+
+
+class l3s6.projet.star.interaction.command.LeaveCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.OfferCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.PlaceCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.PlayCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.ScoreCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+class l3s6.projet.star.interaction.command.StartCommand {
+	{method} +build ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : String
+	{method} +execute ( paramString1 : String , paramList2 : java.util.List , paramSpectatorView3 : l3s6.projet.star.interaction.view.SpectatorView ) : void
+}
+
+
+abstract class l3s6.projet.star.interaction.network.AbstractClient {
+	{field} #id : String
+	{method} +close () : void
+	{method} +send ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : void
+}
+
+
+class l3s6.projet.star.interaction.network.AdminClient {
+}
+
+
+class l3s6.projet.star.interaction.network.GameSocket {
+	{field} ~ipAddress : String
+	{field} ~port : int
+	{method} +onClose ( paramint1 : int , paramString2 : String , paramboolean3 : boolean ) : void
+	{method} +onError ( paramException1 : Exception ) : void
+	{method} +onMessage ( paramString1 : String ) : void
+	{method} +onOpen ( paramServerHandshake1 : org.java_websocket.handshake.ServerHandshake ) : void
+}
+
+
+class l3s6.projet.star.interaction.network.PlayerClient {
+	{method} +close () : void
+}
+
+
+class l3s6.projet.star.interaction.network.SpectatorClient {
+}
+
+
+enum l3s6.projet.star.interaction.role.Role {
+	{field} +PLAYER
+	{field} +REFEREE
+	{field} +SPECTATOR
+	{field} +UTILITY
+}
+
+
+class l3s6.projet.star.interaction.role.RoleManager {
+	{method} +addRole ( paramString1 : String , paramRole2 : l3s6.projet.star.interaction.role.Role ) : void
+	{method} +getRole ( paramString1 : String ) : l3s6.projet.star.interaction.role.Role
+	{method} +isRole ( paramString1 : String , paramRole2 : l3s6.projet.star.interaction.role.Role ) : boolean
+}
+
+
+abstract class l3s6.projet.star.interaction.router.AbstractRouter {
+	{method} +update ( paramString1 : String ) : void
+}
+
+
+class l3s6.projet.star.interaction.router.AdminRouter {
+}
+
+
+interface l3s6.projet.star.interaction.router.GameListener {
+	{method}  {abstract} +update ( paramString1 : String ) : void
+}
+
+
+class l3s6.projet.star.interaction.router.PlayerRouter {
+}
+
+
+class l3s6.projet.star.interaction.router.SpectatorRouter {
+}
+
+
+abstract class l3s6.projet.star.interaction.view.AbstractView {
+	{field} #id : String
+	{method} #beforeConnection () : void
+	{method} +connect ( paramString1 : String , paramint2 : int , paramString3 : String ) : void
+	{method}  {abstract} #createClient ( paramString1 : String , paramint2 : int , paramString3 : String ) : l3s6.projet.star.interaction.network.AbstractClient
+	{method}  {abstract} #createRouter () : l3s6.projet.star.interaction.router.GameListener
+	{method} +send ( paramString1 : String , paramObject;2 : [Ljava.lang.Object; ) : void
+	{method} +send ( paramString1 : String , paramList2 : java.util.List ) : void
+}
+
+
+class l3s6.projet.star.interaction.view.AdminView {
+	{method} #createClient ( paramString1 : String , paramint2 : int , paramString3 : String ) : l3s6.projet.star.interaction.network.AbstractClient
+	{method} #createRouter () : l3s6.projet.star.interaction.router.GameListener
+	{method}  {static} +main ( paramString;1 : [Ljava.lang.String; ) : void
+	{method} +updateOnGrant ( paramString1 : String , paramString2 : String , paramList3 : java.util.List ) : void
+}
+
+
+class l3s6.projet.star.interaction.view.PlayerView {
+	{method} +connect ( paramString1 : String , paramint2 : int , paramString3 : String ) : void
+	{method} #createClient ( paramString1 : String , paramint2 : int , paramString3 : String ) : l3s6.projet.star.interaction.network.AbstractClient
+	{method} #createRouter () : l3s6.projet.star.interaction.router.GameListener
+	{method}  {static} +main ( paramString;1 : [Ljava.lang.String; ) : void
+}
+
+
+class l3s6.projet.star.interaction.view.SpectatorView {
+	{method} +connect ( paramString1 : String , paramint2 : int , paramString3 : String ) : void
+	{method} #createClient ( paramString1 : String , paramint2 : int , paramString3 : String ) : l3s6.projet.star.interaction.network.AbstractClient
+	{method} #createRouter () : l3s6.projet.star.interaction.router.GameListener
+	{method}  {static} +main ( paramString;1 : [Ljava.lang.String; ) : void
+	{method} +updateOnAgree ( paramString1 : String , paramList2 : java.util.List ) : void
+	{method} +updateOnBlame ( paramString1 : String , paramint2 : int ) : void
+	{method} +updateOnBlameWithReason ( paramString1 : String , paramString2 : String , paramString3 : String ) : void
+	{method} +updateOnClose ( paramString1 : String ) : void
+	{method} +updateOnCollect ( paramString1 : String , paramString2 : String , paramString3 : String , paramint4 : int , paramint5 : int ) : void
+	{method} +updateOnCollectAtStart ( paramString1 : String , paramString2 : String , paramString3 : String , paramint4 : int ) : void
+	{method} +updateOnElect ( paramString1 : String , paramString2 : String , paramList3 : java.util.List ) : void
+	{method} +updateOnEnd ( paramString1 : String , paramList2 : java.util.List ) : void
+	{method} +updateOnEnter ( paramString1 : String ) : void
+	{method} +updateOnExpel ( paramString1 : String , paramString2 : String ) : void
+	{method} +updateOnLeave ( paramString1 : String ) : void
+	{method} +updateOnOffer ( paramString1 : String , paramString2 : String , paramString3 : String ) : void
+	{method} +updateOnPlace ( paramString1 : String , paramString2 : String , paramString3 : String , paramint4 : int , paramint5 : int ) : void
+	{method} +updateOnPlaceWithMeeple ( paramString1 : String , paramString2 : String , paramString3 : String , paramint4 : int , paramint5 : int , paramString6 : String , paramString7 : String ) : void
+	{method} +updateOnPlay ( paramString1 : String ) : void
+	{method} +updateOnScore ( paramString1 : String , paramString2 : String , paramint3 : int ) : void
+	{method} +updateOnStart ( paramString1 : String ) : void
+}
+
+
+
+
+l3s6.projet.star.interaction.command.AgreeCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.BlameCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.CloseCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.CollectCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.ElectCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.EndCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.EnterCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.ExpelCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.GrantCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.LeaveCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.OfferCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.PlaceCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.PlayCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.ScoreCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.command.StartCommand --|>  l3s6.projet.star.interaction.command.AbstractCommand
+l3s6.projet.star.interaction.network.AbstractClient "1" o-- "0..*"  l3s6.projet.star.interaction.command.AbstractCommand : commands
+l3s6.projet.star.interaction.network.AbstractClient -->  l3s6.projet.star.interaction.network.GameSocket : cws
+l3s6.projet.star.interaction.network.AdminClient --|>  l3s6.projet.star.interaction.network.PlayerClient
+l3s6.projet.star.interaction.network.GameSocket -->  l3s6.projet.star.interaction.router.GameListener : updateListener
+l3s6.projet.star.interaction.network.PlayerClient --|>  l3s6.projet.star.interaction.network.SpectatorClient
+l3s6.projet.star.interaction.network.SpectatorClient --|>  l3s6.projet.star.interaction.network.AbstractClient
+l3s6.projet.star.interaction.role.RoleManager "1" o-- "0..*"  l3s6.projet.star.interaction.role.Role : roles
+l3s6.projet.star.interaction.router.AbstractRouter "1" o-- "0..*"  l3s6.projet.star.interaction.command.AbstractCommand : commands
+l3s6.projet.star.interaction.router.AbstractRouter -->  l3s6.projet.star.interaction.view.AbstractView : view
+l3s6.projet.star.interaction.router.AbstractRouter ..|>  l3s6.projet.star.interaction.router.GameListener
+l3s6.projet.star.interaction.router.AdminRouter --|>  l3s6.projet.star.interaction.router.PlayerRouter
+l3s6.projet.star.interaction.router.PlayerRouter --|>  l3s6.projet.star.interaction.router.SpectatorRouter
+l3s6.projet.star.interaction.router.SpectatorRouter --|>  l3s6.projet.star.interaction.router.AbstractRouter
+l3s6.projet.star.interaction.view.AbstractView -->  l3s6.projet.star.interaction.network.AbstractClient : client
+l3s6.projet.star.interaction.view.AbstractView -->  l3s6.projet.star.interaction.role.RoleManager : roleManager
+l3s6.projet.star.interaction.view.AbstractView -->  l3s6.projet.star.interaction.router.GameListener : dispatcher
+l3s6.projet.star.interaction.view.AdminView --|>  l3s6.projet.star.interaction.view.PlayerView
+l3s6.projet.star.interaction.view.PlayerView --|>  l3s6.projet.star.interaction.view.SpectatorView
+l3s6.projet.star.interaction.view.SpectatorView --|>  l3s6.projet.star.interaction.view.AbstractView
+
+
+@enduml
