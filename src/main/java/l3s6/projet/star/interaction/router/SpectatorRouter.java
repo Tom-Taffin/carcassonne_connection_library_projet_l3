@@ -19,6 +19,7 @@ public class SpectatorRouter<V extends SpectatorView<?>> extends AbstractRouter<
         this.commands.add(new StartCommand<>());
         this.commands.add(new PlayCommand<>());
         this.commands.add(new CollectCommand<>());
+        this.commands.add(new BlameCommand<>());
     }
 
 }
