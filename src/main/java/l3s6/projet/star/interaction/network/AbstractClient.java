@@ -34,6 +34,12 @@ public abstract class AbstractClient {
         this.cws.close();
     }
 
+    /**
+     * Sends a command and its parameters to the Carcassonne Web Socket
+     * @param commandName the name of the command being sent
+     * @param params the parameters of the command being sent
+     * @throws InvalidArgumentNumberException if the command being sent does not exist
+     */
     public void send(String commandName, Object... params) throws InvalidArgumentNumberException{
         for (AbstractCommand<?> command : this.commands){
             if (command.getKeyword().equals(commandName)){

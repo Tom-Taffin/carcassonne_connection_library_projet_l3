@@ -31,21 +31,39 @@ public class GameSocket extends WebSocketClient {
         this.updateListener = updateListener;
     }
 
+    /**
+     * Called when the connection to the server is established.
+     * @param serverHandshake the handshake data sent by the server
+     */
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
         System.out.println("CarcassonneWebSocket opened");
     }
 
+    /**
+     * Called when a message is received from the server, forwarded to the update listener.
+     * @param message the message received from the server
+     */
     @Override
     public void onMessage(String message) {
         this.updateListener.update(message);
     }
 
+    /**
+     * Called when the connection to the server is closed.
+     * @param i the close code
+     * @param s the close reason
+     * @param b whether the closing was initiated by the remote host
+     */
     @Override
     public void onClose(int i, String s, boolean b) {
         System.out.println(s);
     }
 
+    /**
+     * Called when an error occurs on the connection.
+     * @param e the exception that was raised
+     */
     @Override
     public void onError(Exception e) {
         e.printStackTrace();
