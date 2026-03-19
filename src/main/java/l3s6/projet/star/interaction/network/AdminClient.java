@@ -10,6 +10,15 @@ import l3s6.projet.star.interaction.router.GameListener;
  */
 public class AdminClient extends PlayerClient {
 
+    /**
+     * Constructs an AdminClient and registers all commands available for an admin.
+     * @param ip the IP address of the server
+     * @param port the port of the server
+     * @param id the identifier of the admin
+     * @param updateListener the game listener to notify upon receiving commands
+     * @throws URISyntaxException if the server URI has incorrect syntax
+     * @throws InterruptedException if the connection is interrupted
+     */
     public AdminClient(String ip, int port, String id, GameListener updateListener) throws URISyntaxException, InterruptedException{
         super(ip, port, id, updateListener);
         this.commands.add(new ExpelCommand<>());
