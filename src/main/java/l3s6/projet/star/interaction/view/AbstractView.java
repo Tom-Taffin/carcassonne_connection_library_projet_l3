@@ -19,10 +19,14 @@ public abstract class AbstractView<T extends AbstractClient> {
         this.id = id;
         this.beforeConnection();
         this.connect(ipAddress, port, id);
+        this.afterConnection();
     }
 
     protected void beforeConnection(){
         this.roleManager = new RoleManager();
+    }
+
+    protected void afterConnection(){
     }
 
     @SuppressWarnings("unchecked")
