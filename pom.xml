@@ -85,7 +85,7 @@
                 <version>3.6.0</version>
                 <executions>
                     <execution>
-                        <id>make-jar-client</id>
+                        <id>adminView</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -104,7 +104,7 @@
                     </execution>
 
                     <execution>
-                        <id>make-jar-serveur</id>
+                        <id>playerView</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -119,6 +119,25 @@
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
                             <finalName>PlayerView</finalName> <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>spectatorView</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>l3s6.projet.star.interaction.view.SpectatorView</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <finalName>SpectatorView</finalName> <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
                 </executions>
