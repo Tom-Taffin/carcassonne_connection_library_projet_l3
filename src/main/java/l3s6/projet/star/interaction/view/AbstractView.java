@@ -47,4 +47,8 @@ public abstract class AbstractView<T extends AbstractClient> {
         this.client.send(commandName, params.toArray());
     }
 
+    public RoleManager getRoleManager(){
+        return this.roleManager;
+    }
+
 }
