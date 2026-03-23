@@ -99,7 +99,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>AdminView</finalName> <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>AdminMain</finalName> <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
 
@@ -118,7 +118,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>PlayerView</finalName> <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>PlayerMain</finalName> <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
 
@@ -137,7 +137,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <finalName>SpectatorView</finalName> <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>SpectatorMain</finalName> <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
                 </executions>
