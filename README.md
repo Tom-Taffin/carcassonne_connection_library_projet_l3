@@ -18,7 +18,7 @@ Une librairie Java standardisée pour connecter différents programmes (arbitre,
   - [Architecture générale](#architecture-générale)
   - [Flux d'envoi d'un message](#flux-denvoi-dun-message)
   - [Flux de réception d'un message](#flux-de-réception-dun-message)
-  - [Structure des packages](#structure-des-packages)
+  - [Étendre la librairie](#étendre-la-librairie)
 
 ---
 
@@ -28,7 +28,7 @@ Dans le projet Carcassonne, plusieurs programmes indépendants — un arbitre, d
 
 La `carcassonne_connection_library` résout ces problèmes en proposant un cadre de communication commun. Voici pourquoi vous devriez l'utiliser plutôt que de passer directement par le réflecteur :
 
-**Un protocole de communication strict.** Chaque type de message est encapsulé dans une classe `Command` dédiée. Il est impossible d'envoyer un message mal formé — mauvais nombre d'arguments, mauvais types — sans qu'une exception Java soit levée au moment de la construction du message. Fini les bugs silencieux causés par une chaîne de caractères mal construite à la main.
+**Un protocole de communication strict.** Chaque type de message est encapsulé dans une classe `Command` dédiée. Il est impossible d'envoyer un message mal formé — mauvais nombre d'arguments, mauvais types — sans qu'une exception Java soit levée au moment de la construction du message. Fini les bugs silencieux causés par une chaîne de caractères mal construite à la main. Pour en savoir plus sur les messages voir [message_carcassone](https://gitlab-etu.fil.univ-lille.fr/l3s6-projet-g6-star/participant_infos/-/blob/master/messages_carcassonne.md).
 
 **Une sécurité par construction grâce aux rôles.** Un spectateur ne possède physiquement pas les méthodes pour envoyer un placement de tuile. Un joueur ne peut pas démarrer une partie. Ces contraintes sont imposées par la hiérarchie des classes, pas par des vérifications à l'exécution fragiles et faciles à contourner.
 
@@ -82,7 +82,7 @@ La librairie fournit trois exécutables JAR de test dans le dossier `target/`. I
 java -jar SpectatorMain.jar <Host IP> <Host Port>
 
 # Interface joueur
-java -jar PlayerMain.jar <Host IP> <Host Port> <Votre ID>
+java -jar PlayerMain.jar Ce projet possède différents programmes tels qu'un programme arbitre, un programme robot et une interface graphique qui doivent communiquer par un réflecteur. Ces programme utiliserons donc cette librairie pour communiquer selon les règles dans <Host IP> <Host Port> <Votre ID>
 
 # Interface arbitre (accès complet)
 java -jar AdminMain.jar <Host IP> <Host Port> <Votre ID>
