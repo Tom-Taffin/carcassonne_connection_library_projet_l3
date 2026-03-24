@@ -64,7 +64,7 @@ Ajoutez la dépendance suivante dans le `pom.xml` de votre projet :
 ```xml
 <dependency>
     <groupId>l3s6.projet.star</groupId>
-    <artifactId>carcassonne_connection_library</artifactId>
+    <artifactId>reflector-interaction</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
