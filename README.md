@@ -82,7 +82,7 @@ La librairie fournit trois exécutables JAR de test dans le dossier `target/`. I
 java -jar SpectatorMain.jar <Host IP> <Host Port>
 
 # Interface joueur
-java -jar PlayerMain.jar Ce projet possède différents programmes tels qu'un programme arbitre, un programme robot et une interface graphique qui doivent communiquer par un réflecteur. Ces programme utiliserons donc cette librairie pour communiquer selon les règles dans <Host IP> <Host Port> <Votre ID>
+java -jar PlayerMain.jar <Host IP> <Host Port> <Votre ID>
 
 # Interface arbitre (accès complet)
 java -jar AdminMain.jar <Host IP> <Host Port> <Votre ID>
