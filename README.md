@@ -48,10 +48,10 @@ Clonez le dépôt et installez la librairie dans votre dépôt Maven local :
 
 ```bash
 # Avec SSH
-git clone git@gitlab-etu.fil.univ-lille.fr:l3s6-projet-g6-star/carcassonne_connection_library.git
+git clone git@github.com:Tom-Taffin/carcassonne_connection_library_projet_l3.git
 
 # Avec HTTPS
-git clone https://gitlab-etu.fil.univ-lille.fr/l3s6-projet-g6-star/carcassonne_connection_library.git
+git clone https://github.com/Tom-Taffin/carcassonne_connection_library_projet_l3.git
 
 cd carcassonne_connection_library
 mvn clean install
